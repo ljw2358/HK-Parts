@@ -1,192 +1,196 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PHK PartsBank</title>
+  <title>PHK Ventures</title>
+
   <style>
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-      background:radial-gradient(circle at top,#0f2433,#060b12);
-      color:#e5e7eb;
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #0b0f19;
+      color: #ffffff;
+      line-height: 1.7;
     }
-    .wrap{
-      max-width:960px;
-      margin:0 auto;
-      padding:90px 22px 70px;
+
+    header {
+      padding: 24px;
+      border-bottom: 1px solid #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 14px;
-      border-radius:999px;
-      font-size:14px;
-      background:rgba(52,211,153,0.12);
-      color:#6ee7b7;
-      margin-bottom:18px;
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.5px;
     }
-    h1{
-      font-size:46px;
-      line-height:1.15;
-      margin:0 0 22px;
-      letter-spacing:-0.6px;
+
+    .lang-buttons button {
+      background: transparent;
+      border: 1px solid #555;
+      color: #fff;
+      padding: 6px 12px;
+      margin-left: 6px;
+      cursor: pointer;
+      border-radius: 4px;
     }
-    p{
-      font-size:18px;
-      line-height:1.7;
-      color:#cbd5e1;
-      max-width:820px;
+
+    .lang-buttons button:hover {
+      background: #1e90ff;
+      border-color: #1e90ff;
     }
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-      margin-top:36px;
+
+    main {
+      padding: 28px 20px 80px;
+      max-width: 960px;
+      margin: auto;
     }
-    @media(min-width:860px){
-      .grid{ grid-template-columns:1fr 1fr; }
+
+    section {
+      margin-bottom: 40px;
     }
-    .card{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:18px;
-      padding:22px;
+
+    h2 {
+      font-size: 20px;
+      border-left: 4px solid #1e90ff;
+      padding-left: 10px;
     }
-    .card h2{
-      font-size:18px;
-      margin:0 0 10px;
-      color:#7dd3fc;
-    }
-    .card ul{
-      margin:0;
-      padding-left:18px;
-    }
-    .card li{
-      margin:8px 0;
-      font-size:16px;
-    }
-    .flow{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:10px;
-      margin-top:18px;
-      font-size:14.5px;
-      color:#e5e7eb;
-    }
-    .flow div{
-      padding:12px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-      text-align:center;
-    }
-    .cta{
-      margin-top:34px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-    }
-    .btn{
-      padding:14px 22px;
-      border-radius:14px;
-      font-size:16px;
-      font-weight:600;
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,0.12);
-      background:#0f766e;
-      color:#ecfeff;
-    }
-    .btn.alt{
-      background:transparent;
-      color:#7dd3fc;
-    }
-    .footer{
-      margin-top:50px;
-      padding-top:24px;
-      border-top:1px solid rgba(255,255,255,0.1);
-      font-size:14px;
-      color:#9ca3af;
-    }
-    .email{
-      margin-top:8px;
-      color:#7dd3fc;
-      font-weight:600;
+
+    footer {
+      border-top: 1px solid #222;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
+
 <body>
 
-<main class="wrap">
+<header>
+  <h1>PHK Ventures</h1>
+  <div class="lang-buttons">
+    <button onclick="setLang('kr')">KR</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ar')">AR</button>
+  </div>
+</header>
 
-  <div class="badge">중개 · 소싱 · 물류 · 표준</div>
+<main>
 
-  <h1>
-    로봇 시대의<br>
-    <span style="color:#6ee7b7">부품 은행</span>을 만듭니다.
-  </h1>
+  <!-- KR -->
+  <div class="lang kr">
+    <section>
+      <h2>PHK Ventures 소개</h2>
+      <p>
+        PHK Ventures는 PHK Global 산하의 전략 투자 조직으로,
+        로보틱스, 인공태양(핵융합), 우주산업, 금융 인프라,
+        그리고 차세대 Physical AI 산업 전반에 걸쳐
+        고수익·고임팩트 프로젝트에 집중 투자합니다.
+      </p>
+    </section>
 
-  <p>
-    PHK PartsBank는 전 세계 제조사와 구매자를 직접 연결하는
-    <strong>산업 부품 거래 플랫폼</strong>입니다.<br>
-    우리는 비전을 설명하지 않고,
-    <strong>부품을 연결해 현금흐름을 만듭니다.</strong>
-  </p>
+    <section>
+      <h2>투자의 이유</h2>
+      <p>
+        이유는 단 하나, <strong>이윤</strong>입니다.<br/>
+        PHK Ventures는 기술을 위한 기술이 아니라,
+        실질적인 수익 창출과 시장 지배력을 목표로 합니다.
+      </p>
+    </section>
 
-  <section class="grid">
-    <div class="card">
-      <h2>무엇을 해결합니까</h2>
-      <ul>
-        <li>검증된 공급사와 구매자 직접 연결</li>
-        <li>중개 비용·시간·불확실성 제거</li>
-        <li>표준 기반 견적과 투명한 가격</li>
-        <li>확장 가능한 글로벌 물류 연계</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>거래는 이렇게 진행됩니다</h2>
-      <div class="flow">
-        <div>부품 등록</div>
-        <div>견적 요청</div>
-        <div>매칭·검증</div>
-        <div>거래·물류</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="grid">
-    <div class="card">
-      <h2>초기 집중 영역</h2>
-      <ul>
-        <li>로봇·자동화 핵심 부품</li>
-        <li>산업용 모터·액추에이터·센서</li>
-        <li>전력·제어·모듈 부품</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>확장 경로</h2>
-      <ul>
-        <li>에너지·인프라 부품</li>
-        <li>우주·특수 산업 부품</li>
-        <li>표준·데이터 기반 B2B 마켓</li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="cta">
-    <button class="btn">공급사로 참여</button>
-    <button class="btn alt">구매 문의</button>
+    <section>
+      <h2>PHK 체계</h2>
+      <p>
+        기존 PWB 구조는 PHK 체계로 통합되었으며,
+        모든 글로벌 확장과 투자 흐름은 PHK Global을 중심으로
+        재편되었습니다.
+      </p>
+    </section>
   </div>
 
-  <footer class="footer">
-    <div><b>PHK PartsBank</b> · Global Industrial Parts Exchange</div>
-    <div class="email">Contact: info@phkpartsbank.com</div>
-  </footer>
+  <!-- EN -->
+  <div class="lang en" style="display:none;">
+    <section>
+      <h2>About PHK Ventures</h2>
+      <p>
+        PHK Ventures is the strategic investment arm under PHK Global,
+        focusing on high-return, high-impact projects across
+        robotics, fusion energy, space industry, financial infrastructure,
+        and next-generation Physical AI.
+      </p>
+    </section>
+
+    <section>
+      <h2>Why We Invest</h2>
+      <p>
+        The reason is simple: <strong>Profit</strong>.<br/>
+        PHK Ventures does not invest for technology alone,
+        but for scalable returns and market dominance.
+      </p>
+    </section>
+
+    <section>
+      <h2>PHK Framework</h2>
+      <p>
+        The former PWB structure has been fully integrated into PHK,
+        with all global expansion and capital flows now centered
+        around PHK Global.
+      </p>
+    </section>
+  </div>
+
+  <!-- AR -->
+  <div class="lang ar" style="display:none; direction: rtl; text-align: right;">
+    <section>
+      <h2>نبذة عن PHK Ventures</h2>
+      <p>
+        PHK Ventures هي الذراع الاستثمارية الاستراتيجية التابعة لـ PHK Global،
+        وتركز على المشاريع ذات العائد المرتفع في مجالات الروبوتات،
+        طاقة الاندماج، صناعة الفضاء، البنية المالية،
+        والذكاء الاصطناعي الفيزيائي.
+      </p>
+    </section>
+
+    <section>
+      <h2>سبب الاستثمار</h2>
+      <p>
+        السبب واضح: <strong>الربح</strong>.<br/>
+        PHK Ventures تستثمر لتحقيق عوائد حقيقية
+        وهيمنة سوقية مستدامة.
+      </p>
+    </section>
+
+    <section>
+      <h2>منظومة PHK</h2>
+      <p>
+        تم دمج هيكل PWB السابق بالكامل ضمن منظومة PHK،
+        وأصبحت جميع التوسعات العالمية
+        تحت إدارة PHK Global.
+      </p>
+    </section>
+  </div>
 
 </main>
+
+<footer>
+  Contact: info@phkbank.com<br/>
+  © PHK Global / PHK Ventures
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.querySelector('.' + lang).style.display = 'block';
+  }
+</script>
 
 </body>
 </html>
