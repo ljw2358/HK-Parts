@@ -11,13 +11,11 @@
     :root{
       --bg:#0b1220;
       --card:#101a32;
-      --card2:#0f1930;
       --text:#eaf0ff;
       --muted:#b8c3e6;
       --line:rgba(255,255,255,.12);
       --accent:#7cf7c2;
       --accent2:#76a8ff;
-      --warn:#ffd36a;
       --shadow: 0 20px 60px rgba(0,0,0,.35);
       --radius:18px;
       --max:1080px;
@@ -37,6 +35,7 @@
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 56px}
+
     header{
       display:flex; align-items:center; justify-content:space-between;
       gap:14px; padding:14px 14px;
@@ -56,8 +55,7 @@
       border:1px solid rgba(255,255,255,.14);
       box-shadow: 0 12px 30px rgba(0,0,0,.35);
       display:grid; place-items:center;
-      position:relative;
-      overflow:hidden;
+      position:relative; overflow:hidden;
     }
     .logo:after{
       content:"";
@@ -67,22 +65,31 @@
     }
     @keyframes spin{to{transform:rotate(360deg)}}
     .logo span{
-      position:relative;
-      z-index:1;
-      font-weight:800;
-      letter-spacing:.5px;
-      font-size:14px;
+      position:relative; z-index:1;
+      font-weight:800; letter-spacing:.5px; font-size:14px;
       color: rgba(10,18,32,.95);
       background: rgba(234,240,255,.92);
-      padding:2px 8px;
-      border-radius:10px;
+      padding:2px 8px; border-radius:10px;
     }
     .brand h1{margin:0; font-size:16px; letter-spacing:.2px}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
-    .top-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px;
+
+    /* ===== Language UI (VISIBLE) ===== */
+    .langBar{
+      display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .langLabel{
+      font-size:12px;
+      color: var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .langBtn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:8px 10px;
       border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.05);
@@ -91,16 +98,14 @@
       cursor:pointer;
       transition: transform .15s ease, background .2s ease, border-color .2s ease;
       user-select:none;
+      min-width:44px;
+      text-transform:uppercase;
     }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2)}
-    select.pill{appearance:none; padding-right:34px}
-    .selectWrap{position:relative; display:inline-flex}
-    .selectWrap:after{
-      content:"▾";
-      position:absolute; right:12px; top:50%; transform:translateY(-50%);
-      color: var(--muted);
-      pointer-events:none;
-      font-size:12px;
+    .langBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2)}
+    .langBtn.active{
+      background: linear-gradient(90deg, rgba(124,247,194,.18), rgba(118,168,255,.18));
+      border-color: rgba(124,247,194,.30);
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
     }
 
     .hero{
@@ -152,6 +157,7 @@
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
     .hero p{margin:0 0 16px; color: var(--muted); font-size:14px; max-width: 62ch}
+
     .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 6px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
@@ -171,6 +177,7 @@
       border-color: rgba(124,247,194,.22);
     }
     .btn.primary:hover{border-color: rgba(124,247,194,.35)}
+
     .mini{
       color: var(--muted);
       font-size:12px;
@@ -192,14 +199,6 @@
       padding:16px;
       position:relative;
       overflow:hidden;
-    }
-    .cardRight:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(500px 250px at 30% 20%, rgba(255,211,106,.10), transparent 65%),
-        radial-gradient(520px 260px at 80% 80%, rgba(118,168,255,.10), transparent 70%);
-      pointer-events:none;
     }
     .cardRight h3{position:relative; margin:0 0 8px; font-size:14px}
     .cardRight ul{position:relative; margin:0; padding:0 0 0 16px; color: var(--muted); font-size:13px}
@@ -274,18 +273,26 @@
       flex-wrap:wrap;
     }
     .muted{color:var(--muted)}
-    .kpiRow{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
+    .hr{
+      height:1px;
+      background: var(--line);
+      margin: 10px 0;
+      border:0;
     }
-    .kpi{
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: 14px;
-      padding:10px 12px;
-      min-width: 160px;
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size:12px;
+      cursor:pointer;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
     }
-    .kpi b{display:block; font-size:12px}
-    .kpi span{color:var(--muted); font-size:12px}
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2)}
 
     .toast{
       position: fixed;
@@ -310,12 +317,6 @@
       background: var(--accent);
       box-shadow: 0 0 18px rgba(124,247,194,.55);
     }
-    .hr{
-      height:1px;
-      background: var(--line);
-      margin: 10px 0;
-      border:0;
-    }
   </style>
 </head>
 
@@ -330,16 +331,15 @@
         </div>
       </div>
 
-      <div class="top-actions">
-        <div class="selectWrap" title="Language">
-          <select class="pill" id="langSelect" aria-label="Language selector"></select>
-        </div>
-        <button class="pill" id="copyEmailBtn" type="button" title="Copy email">
-          <span>📩</span><span id="t_copyEmail">Copy Email</span>
-        </button>
-        <a class="pill" href="#contact" title="Contact">
-          <span>📞</span><span id="t_contactTop">Contact</span>
-        </a>
+      <!-- ✅ Language buttons are ALWAYS visible -->
+      <div class="langBar" aria-label="Language">
+        <span class="langLabel" id="t_langLabel">Language</span>
+        <button class="langBtn" data-lang="auto" type="button">AUTO</button>
+        <button class="langBtn" data-lang="en" type="button">EN</button>
+        <button class="langBtn" data-lang="ko" type="button">KR</button>
+        <button class="langBtn" data-lang="ar" type="button">AR</button>
+        <button class="langBtn" data-lang="zh" type="button">ZH</button>
+        <button class="langBtn" data-lang="ja" type="button">JA</button>
       </div>
     </header>
 
@@ -370,21 +370,6 @@
             <span>⚙️ <span id="t_mini2">Robotics/AMR BOM sourcing</span></span>
             <span>📦 <span id="t_mini3">Global shipping support</span></span>
             <span>📊 <span id="t_mini4">Parts standardization</span></span>
-          </div>
-
-          <div class="kpiRow">
-            <div class="kpi">
-              <b id="t_kpi1t">Focus</b>
-              <span id="t_kpi1v">Robotics & Industrial Parts</span>
-            </div>
-            <div class="kpi">
-              <b id="t_kpi2t">Model</b>
-              <span id="t_kpi2v">B2B Exchange + Data Hub</span>
-            </div>
-            <div class="kpi">
-              <b id="t_kpi3t">Expansion</b>
-              <span id="t_kpi3v">Energy & Space-grade parts</span>
-            </div>
           </div>
         </div>
 
@@ -423,91 +408,6 @@
         </div>
       </div>
     </div>
-
-    <section>
-      <div class="sectionHead">
-        <h3 id="t_scopeTitle">Initial Scope</h3>
-        <p id="t_scopeSub">Start with high-frequency robotics parts → expand to industrial/energy/space parts</p>
-      </div>
-
-      <div class="cols">
-        <div class="box">
-          <h4 id="t_scopeA">Robotics (MVP)</h4>
-          <ul class="list">
-            <li class="item">
-              <b id="t_sc1">Actuators & Motion</b>
-              <small id="t_sc1d">Motors, reducers (harmonic/planetary), gearboxes, drives, encoders.</small>
-            </li>
-            <li class="item">
-              <b id="t_sc2">Sensors & Perception</b>
-              <small id="t_sc2d">LiDAR, depth cameras, IMU, force/torque, proximity, industrial cameras.</small>
-            </li>
-            <li class="item">
-              <b id="t_sc3">Power & Control</b>
-              <small id="t_sc3d">Batteries, BMS, controllers, SBC/IPC, PLC, wiring harness, connectors.</small>
-            </li>
-          </ul>
-        </div>
-
-        <div class="box">
-          <h4 id="t_scopeB">Industrial / Energy / Space (Scale)</h4>
-          <ul class="list">
-            <li class="item">
-              <b id="t_sc4">Industrial Components</b>
-              <small id="t_sc4d">Bearings, linear guides, precision parts, valves, pumps, servo systems.</small>
-            </li>
-            <li class="item">
-              <b id="t_sc5">Energy-grade Parts</b>
-              <small id="t_sc5d">High-temp materials, vacuum parts, cryogenic components, shielding.</small>
-            </li>
-            <li class="item">
-              <b id="t_sc6">Space-grade Parts</b>
-              <small id="t_sc6d">Radiation-tolerant electronics, aerospace fasteners, thermal control items.</small>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sectionHead">
-        <h3 id="t_howTitle">How It Works</h3>
-        <p id="t_howSub">Simple 4-step process for fast sourcing</p>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <div class="tag">1</div>
-          <h4 id="t_h1">Submit RFQ</h4>
-          <p id="t_h1d">Share specs, quantity, target price, delivery region, and timeline.</p>
-        </div>
-        <div class="box">
-          <div class="tag">2</div>
-          <h4 id="t_h2">Supplier Match</h4>
-          <p id="t_h2d">We identify verified suppliers and alternatives with compatible specs.</p>
-        </div>
-        <div class="box">
-          <div class="tag">3</div>
-          <h4 id="t_h3">Quote & QA</h4>
-          <p id="t_h3d">Compare quotes, confirm lead time, and apply quality check options.</p>
-        </div>
-        <div class="box">
-          <div class="tag">4</div>
-          <h4 id="t_h4">Shipping & Delivery</h4>
-          <p id="t_h4d">Coordinate logistics, documents, customs support, and delivery tracking.</p>
-        </div>
-        <div class="box">
-          <div class="tag">+</div>
-          <h4 id="t_h5">Data Hub</h4>
-          <p id="t_h5d">Build a parts database: compatibility, standards, reliability signals.</p>
-        </div>
-        <div class="box">
-          <div class="tag">+</div>
-          <h4 id="t_h6">Finance Ready</h4>
-          <p id="t_h6d">Prepare escrow, trade credit, and insurance integration with PHK Bank.</p>
-        </div>
-      </div>
-    </section>
 
     <section id="request">
       <div class="sectionHead">
@@ -552,40 +452,7 @@
       </div>
     </section>
 
-    <section>
-      <div class="sectionHead">
-        <h3 id="t_roadTitle">Roadmap</h3>
-        <p id="t_roadSub">MVP → Scale</p>
-      </div>
-
-      <div class="cols">
-        <div class="box">
-          <h4 id="t_r1t">Phase 1 — MVP (0–3 months)</h4>
-          <p class="muted" id="t_r1d">
-            Verified supplier list • RFQ/Quote workflow • Robotics/AMR categories • Basic logistics support.
-          </p>
-        </div>
-        <div class="box">
-          <h4 id="t_r2t">Phase 2 — Data Hub (3–9 months)</h4>
-          <p class="muted" id="t_r2d">
-            Parts database • Compatibility mapping • Standards/spec normalization • Quality/risk signals.
-          </p>
-        </div>
-        <div class="box">
-          <h4 id="t_r3t">Phase 3 — Finance (9–18 months)</h4>
-          <p class="muted" id="t_r3d">
-            Escrow • Trade credit • Insurance • Supplier scoring • PHK Bank integration.
-          </p>
-        </div>
-        <div class="box">
-          <h4 id="t_r4t">Phase 4 — Global Scale (18+ months)</h4>
-          <p class="muted" id="t_r4d">
-            Multi-region warehouses • Enterprise portals • Energy/space-grade parts sourcing expansion.
-          </p>
-        </div>
-      </div>
-    </section>
-
+    <!-- ✅ 연락처는 “맨 아래”만 -->
     <section id="contact">
       <div class="footer">
         <div>
@@ -600,8 +467,8 @@
         </div>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <button class="pill" type="button" id="copyEmailBtn">📩 <span id="t_copyEmail">Copy Email</span></button>
           <a class="pill" href="#top">⬆️ <span id="t_backTop">Back to top</span></a>
-          <button class="pill" type="button" id="copyPageBtn">🔗 <span id="t_copyLink">Copy Page Link</span></button>
         </div>
       </div>
     </section>
@@ -614,28 +481,12 @@
 
   <script>
     // ---------- i18n ----------
-    const languages = [
-      { code:"auto", name:"Auto" },
-      { code:"en", name:"English" },
-      { code:"ko", name:"한국어" },
-      { code:"ar", name:"العربية" },
-      { code:"zh", name:"中文" },
-      { code:"ja", name:"日本語" },
-      { code:"es", name:"Español" },
-      { code:"fr", name:"Français" },
-      { code:"de", name:"Deutsch" },
-      { code:"ru", name:"Русский" },
-      { code:"pt", name:"Português" },
-      { code:"hi", name:"हिन्दी" }
-    ];
-
     const T = {
       en: {
         t_brand:"PHK PartsBank",
         t_tagline:"Global Robotics & Industrial Parts Exchange",
+        t_langLabel:"Language",
         t_kicker:"Brokerage • Sourcing • Logistics • Standards Data",
-        t_copyEmail:"Copy Email",
-        t_contactTop:"Contact",
         t_heroTitle:"Build the parts backbone of the robotics era.",
         t_heroDesc:"PHK PartsBank connects manufacturers and buyers worldwide — with verified suppliers, fast sourcing, transparent quotes, and scalable logistics. Start with robotics parts, expand to industrial, energy, and space-grade components.",
         t_cta1:"See Services",
@@ -644,9 +495,6 @@
         t_mini2:"Robotics/AMR BOM sourcing",
         t_mini3:"Global shipping support",
         t_mini4:"Parts standardization",
-        t_kpi1t:"Focus", t_kpi1v:"Robotics & Industrial Parts",
-        t_kpi2t:"Model", t_kpi2v:"B2B Exchange + Data Hub",
-        t_kpi3t:"Expansion", t_kpi3v:"Energy & Space-grade parts",
 
         t_rightTitle:"What we do (MVP → Scale)",
         t_right1:"Match buyers with verified suppliers for motors, reducers, sensors, batteries, controllers.",
@@ -660,26 +508,6 @@
         t_s2tag:"Sourcing", t_s2t:"BOM Sourcing for Robotics/AMR", t_s2d:"From reducers to LiDAR — fast procurement with lead-time control and alternatives mapping.",
         t_s3tag:"Logistics", t_s3t:"Global Shipping Support", t_s3d:"Shipping options, packaging guidance, customs docs, and delivery risk reduction.",
 
-        t_scopeTitle:"Initial Scope",
-        t_scopeSub:"Start with high-frequency robotics parts → expand to industrial/energy/space parts",
-        t_scopeA:"Robotics (MVP)",
-        t_scopeB:"Industrial / Energy / Space (Scale)",
-        t_sc1:"Actuators & Motion", t_sc1d:"Motors, reducers (harmonic/planetary), gearboxes, drives, encoders.",
-        t_sc2:"Sensors & Perception", t_sc2d:"LiDAR, depth cameras, IMU, force/torque, proximity, industrial cameras.",
-        t_sc3:"Power & Control", t_sc3d:"Batteries, BMS, controllers, SBC/IPC, PLC, wiring harness, connectors.",
-        t_sc4:"Industrial Components", t_sc4d:"Bearings, linear guides, precision parts, valves, pumps, servo systems.",
-        t_sc5:"Energy-grade Parts", t_sc5d:"High-temp materials, vacuum parts, cryogenic components, shielding.",
-        t_sc6:"Space-grade Parts", t_sc6d:"Radiation-tolerant electronics, aerospace fasteners, thermal control items.",
-
-        t_howTitle:"How It Works",
-        t_howSub:"Simple 4-step process for fast sourcing",
-        t_h1:"Submit RFQ", t_h1d:"Share specs, quantity, target price, delivery region, and timeline.",
-        t_h2:"Supplier Match", t_h2d:"We identify verified suppliers and alternatives with compatible specs.",
-        t_h3:"Quote & QA", t_h3d:"Compare quotes, confirm lead time, and apply quality check options.",
-        t_h4:"Shipping & Delivery", t_h4d:"Coordinate logistics, documents, customs support, and delivery tracking.",
-        t_h5:"Data Hub", t_h5d:"Build a parts database: compatibility, standards, reliability signals.",
-        t_h6:"Finance Ready", t_h6d:"Prepare escrow, trade credit, and insurance integration with PHK Bank.",
-
         t_reqTitle:"Request Sourcing",
         t_reqSub:"Use email now — we’ll reply with next steps",
         t_reqA:"Email Template",
@@ -690,30 +518,18 @@
         t_rev3:"Data & standard licensing", t_rev3d:"Specs, compatibility maps, reliability signals, and standards APIs.",
         t_rev4:"Finance integration", t_rev4d:"Escrow, trade credit, insurance, and UBI-linked programs via PHK Bank.",
 
-        t_roadTitle:"Roadmap",
-        t_roadSub:"MVP → Scale",
-        t_r1t:"Phase 1 — MVP (0–3 months)",
-        t_r1d:"Verified supplier list • RFQ/Quote workflow • Robotics/AMR categories • Basic logistics support.",
-        t_r2t:"Phase 2 — Data Hub (3–9 months)",
-        t_r2d:"Parts database • Compatibility mapping • Standards/spec normalization • Quality/risk signals.",
-        t_r3t:"Phase 3 — Finance (9–18 months)",
-        t_r3d:"Escrow • Trade credit • Insurance • Supplier scoring • PHK Bank integration.",
-        t_r4t:"Phase 4 — Global Scale (18+ months)",
-        t_r4d:"Multi-region warehouses • Enterprise portals • Energy/space-grade parts sourcing expansion.",
-
         t_contactTitle:"Contact",
         t_emailLabel:"Email",
         t_footerNote:"PHK PartsBank — Parts exchange, sourcing, logistics, and standards data hub.",
-        t_backTop:"Back to top",
-        t_copyLink:"Copy Page Link"
+        t_copyEmail:"Copy Email",
+        t_backTop:"Back to top"
       },
 
       ko: {
         t_brand:"PHK PartsBank",
         t_tagline:"글로벌 로봇·산업 부품 거래소",
+        t_langLabel:"언어",
         t_kicker:"중개 • 소싱 • 물류 • 표준/데이터",
-        t_copyEmail:"이메일 복사",
-        t_contactTop:"연락",
         t_heroTitle:"로봇 시대의 ‘부품 백본’을 만듭니다.",
         t_heroDesc:"PHK PartsBank는 전 세계 제조사와 구매자를 연결합니다 — 검증된 공급사, 빠른 소싱, 투명한 견적, 확장 가능한 물류. 로봇 부품부터 시작해 산업·에너지·우주급 부품으로 확장합니다.",
         t_cta1:"서비스 보기",
@@ -722,9 +538,6 @@
         t_mini2:"로봇/AMR BOM 소싱",
         t_mini3:"글로벌 배송 지원",
         t_mini4:"부품 표준화",
-        t_kpi1t:"핵심", t_kpi1v:"로봇·산업 부품",
-        t_kpi2t:"모델", t_kpi2v:"B2B 거래소 + 데이터 허브",
-        t_kpi3t:"확장", t_kpi3v:"에너지·우주급 부품",
 
         t_rightTitle:"우리가 하는 일 (MVP → 확장)",
         t_right1:"모터·감속기·센서·배터리·컨트롤러 등 검증된 공급사와 구매자를 매칭합니다.",
@@ -738,26 +551,6 @@
         t_s2tag:"소싱", t_s2t:"로봇/AMR BOM 소싱", t_s2d:"감속기부터 LiDAR까지 — 리드타임 관리와 대체품 매핑까지 지원합니다.",
         t_s3tag:"물류", t_s3t:"글로벌 배송 지원", t_s3d:"배송 옵션, 포장 가이드, 통관 서류, 리스크를 줄이는 딜리버리를 제공합니다.",
 
-        t_scopeTitle:"초기 취급 범위",
-        t_scopeSub:"로봇 핵심 부품부터 시작 → 산업/에너지/우주 부품 확장",
-        t_scopeA:"로봇 (MVP)",
-        t_scopeB:"산업 / 에너지 / 우주 (확장)",
-        t_sc1:"구동/모션", t_sc1d:"모터, 감속기(하모닉/유성), 기어박스, 드라이브, 엔코더.",
-        t_sc2:"센서/인지", t_sc2d:"LiDAR, 깊이카메라, IMU, 힘/토크, 근접, 산업용 카메라.",
-        t_sc3:"전원/제어", t_sc3d:"배터리, BMS, 컨트롤러, SBC/IPC, PLC, 하네스, 커넥터.",
-        t_sc4:"산업 핵심 부품", t_sc4d:"베어링, LM가이드, 정밀부품, 밸브, 펌프, 서보 시스템.",
-        t_sc5:"에너지급 부품", t_sc5d:"고내열 소재, 진공 부품, 극저온 부품, 차폐.",
-        t_sc6:"우주급 부품", t_sc6d:"방사선 내성 전자부품, 항공 패스너, 열제어 부품.",
-
-        t_howTitle:"진행 방식",
-        t_howSub:"빠른 소싱을 위한 4단계",
-        t_h1:"RFQ 제출", t_h1d:"사양, 수량, 목표단가, 납품지역, 일정 정보를 보내주세요.",
-        t_h2:"공급사 매칭", t_h2d:"검증 공급사와 호환 가능한 대체품을 제안합니다.",
-        t_h3:"견적/품질", t_h3d:"견적 비교, 리드타임 확정, 품질 옵션을 적용합니다.",
-        t_h4:"배송/납품", t_h4d:"물류, 서류, 통관 지원, 트래킹까지 연결합니다.",
-        t_h5:"데이터 허브", t_h5d:"호환성·표준·신뢰도 기반의 부품 DB를 구축합니다.",
-        t_h6:"금융 준비", t_h6d:"PHK Bank 연동(에스크로·외상·보험 등)을 준비합니다.",
-
         t_reqTitle:"소싱 요청",
         t_reqSub:"이메일로 바로 요청하시면 됩니다",
         t_reqA:"이메일 템플릿",
@@ -768,31 +561,14 @@
         t_rev3:"데이터/표준 라이선스", t_rev3d:"사양·호환·신뢰도 신호·표준 API.",
         t_rev4:"금융 연동", t_rev4d:"PHK Bank 기반 에스크로·외상·보험·UBI 연계.",
 
-        t_roadTitle:"로드맵",
-        t_roadSub:"MVP → 확장",
-        t_r1t:"1단계 — MVP (0~3개월)",
-        t_r1d:"검증 공급사 리스트 • RFQ/견적 • 로봇/AMR 카테고리 • 기본 물류 지원.",
-        t_r2t:"2단계 — 데이터 허브 (3~9개월)",
-        t_r2d:"부품 DB • 호환성 매핑 • 표준화 • 품질/리스크 신호.",
-        t_r3t:"3단계 — 금융 (9~18개월)",
-        t_r3d:"에스크로 • 외상/신용 • 보험 • 공급사 스코어 • PHK Bank 연동.",
-        t_r4t:"4단계 — 글로벌 확장 (18개월+)",
-        t_r4d:"멀티리전 창고 • 엔터프라이즈 포털 • 에너지/우주급 부품 확장.",
-
-        t_contactTitle:"연락",
+        t_contactTitle:"연락처",
         t_emailLabel:"이메일",
         t_footerNote:"PHK PartsBank — 부품 거래·소싱·물류·표준 데이터 허브.",
-        t_backTop:"맨 위로",
-        t_copyLink:"페이지 링크 복사"
+        t_copyEmail:"이메일 복사",
+        t_backTop:"맨 위로"
       }
     };
 
-    // Fallback: show English for all unspecified languages
-    for (const lang of languages){
-      if (!T[lang.code] && lang.code !== "auto") T[lang.code] = T.en;
-    }
-
-    const langSelect = document.getElementById("langSelect");
     const toast = document.getElementById("toast");
     const toastMsg = document.getElementById("toastMsg");
 
@@ -800,7 +576,7 @@
       toastMsg.textContent = msg;
       toast.classList.add("show");
       clearTimeout(showToast._t);
-      showToast._t = setTimeout(()=> toast.classList.remove("show"), 2400);
+      showToast._t = setTimeout(()=> toast.classList.remove("show"), 2200);
     }
 
     function setText(id, value){
@@ -814,12 +590,6 @@
       if (nav.startsWith("ar")) return "ar";
       if (nav.startsWith("zh")) return "zh";
       if (nav.startsWith("ja")) return "ja";
-      if (nav.startsWith("es")) return "es";
-      if (nav.startsWith("fr")) return "fr";
-      if (nav.startsWith("de")) return "de";
-      if (nav.startsWith("ru")) return "ru";
-      if (nav.startsWith("pt")) return "pt";
-      if (nav.startsWith("hi")) return "hi";
       return "en";
     }
 
@@ -828,12 +598,10 @@
       const dict = T[use] || T.en;
 
       Object.keys(T.en).forEach(key=>{
-        const v = dict[key] || T.en[key];
-        setText(key, v);
+        setText(key, dict[key] || T.en[key]);
       });
 
       // Email template
-      const email = "info@phkpartsbank.com";
       const template = (use === "ko")
 `제목: [PHK PartsBank] 부품 소싱 요청 (RFQ)
 
@@ -874,38 +642,34 @@ Thank you.
 `;
       document.getElementById("emailTemplate").textContent = template;
 
-      // Keep select value (auto/en/ko/...)
-      langSelect.value = code;
+      // dir
       document.documentElement.lang = use;
       document.documentElement.dir = (use === "ar") ? "rtl" : "ltr";
+
+      // buttons active
+      document.querySelectorAll(".langBtn").forEach(btn=>{
+        btn.classList.toggle("active", btn.dataset.lang === code);
+      });
     }
 
-    // Populate select
-    for (const l of languages){
-      const opt = document.createElement("option");
-      opt.value = l.code;
-      opt.textContent = l.name;
-      langSelect.appendChild(opt);
-    }
-
-    // Restore saved language
+    // Save / restore
     const saved = localStorage.getItem("phk_partsbank_lang") || "auto";
     applyLang(saved);
 
-    langSelect.addEventListener("change", (e)=>{
-      const code = e.target.value;
-      localStorage.setItem("phk_partsbank_lang", code);
-      applyLang(code);
-      showToast(code === "auto" ? "Language: Auto" : `Language: ${code}`);
+    document.querySelectorAll(".langBtn").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const code = btn.dataset.lang;
+        localStorage.setItem("phk_partsbank_lang", code);
+        applyLang(code);
+        showToast(code === "auto" ? "Language: AUTO" : `Language: ${code.toUpperCase()}`);
+      });
     });
 
-    // ---------- Actions ----------
     async function copyToClipboard(text){
       try{
         await navigator.clipboard.writeText(text);
         return true;
       }catch(e){
-        // fallback
         const ta = document.createElement("textarea");
         ta.value = text;
         ta.style.position="fixed";
@@ -923,11 +687,6 @@ Thank you.
       }
     }
 
-    document.getElementById("copyEmailBtn").addEventListener("click", async ()=>{
-      const ok = await copyToClipboard("info@phkpartsbank.com");
-      showToast(ok ? "Email copied: info@phkpartsbank.com" : "Copy failed");
-    });
-
     document.getElementById("copyTemplateBtn").addEventListener("click", async ()=>{
       const text = document.getElementById("emailTemplate").textContent;
       const ok = await copyToClipboard(text);
@@ -940,10 +699,9 @@ Thank you.
       window.location.href = `mailto:info@phkpartsbank.com?subject=${subject}&body=${body}`;
     });
 
-    document.getElementById("copyPageBtn").addEventListener("click", async ()=>{
-      const link = window.location.href.split("#")[0];
-      const ok = await copyToClipboard(link);
-      showToast(ok ? "Link copied" : "Copy failed");
+    document.getElementById("copyEmailBtn").addEventListener("click", async ()=>{
+      const ok = await copyToClipboard("info@phkpartsbank.com");
+      showToast(ok ? "Email copied: info@phkpartsbank.com" : "Copy failed");
     });
   </script>
 </body>
