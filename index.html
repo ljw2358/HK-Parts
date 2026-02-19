@@ -1,493 +1,388 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PHK PartsBank</title>
-  <meta name="description" content="PHK PartsBank - Global industrial parts trading platform. Connect verified suppliers and buyers." />
-  <style>
-    :root{
-      --bg1:#07121c;
-      --bg2:#0b1b2a;
-      --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.04);
-      --line: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --soft: rgba(255,255,255,0.55);
-      --accent:#41e0b7;
-      --accent2:#2bbca0;
-      --btn:#1b2a3a;
-      --shadow: 0 16px 40px rgba(0,0,0,0.35);
-      --radius: 18px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HK-PARTS: Precision Engineering, Aerospace Components, and Robotic Actuators by Hye-Gong">
+    <title>HK-PARTS | The Standard of Precision</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+KR:wght@100;400;700&family=Noto+Sans+SC:wght@100;400;700&family=Noto+Sans+Arabic:wght@100;400;700&family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* [1] SYSTEM VARIABLES - 산업적인 금속 느낌의 팔레트 */
+        :root {
+            --metal-silver: #e0e0e0;
+            --industrial-blue: #0047AB;
+            --gear-orange: #FF8C00;
+            --factory-dark: #0a0a0c;
+            --border-gray: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans KR",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(65,224,183,0.18), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(80,140,255,0.12), transparent 55%),
-        linear-gradient(180deg, var(--bg2), var(--bg1));
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+        /* [2] GLOBAL STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background-color: var(--factory-dark); 
+            color: var(--metal-silver); 
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
 
-    a{ color:inherit; text-decoration:none; }
-    .wrap{
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 28px 18px 80px;
-    }
+        /* [3] BACKGROUND DECORATION - 기계 도면 느낌 */
+        .blueprint-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 71, 171, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 71, 171, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
 
-    /* top language switch */
-    .topbar{
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      z-index: 9999;
-      display:flex;
-      gap:8px;
-      padding: 8px;
-      border: 1px solid var(--line);
-      background: rgba(10,18,28,0.55);
-      backdrop-filter: blur(10px);
-      border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-    .langbtn{
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      font-size: 12px;
-      line-height: 1;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      user-select:none;
-    }
-    .langbtn:hover{ background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.22); }
-    .langbtn:active{ transform: scale(0.98); }
-    .langbtn.active{
-      background: rgba(65,224,183,0.16);
-      border-color: rgba(65,224,183,0.55);
-      color: #dffcf4;
-    }
+        /* [4] NAVIGATION BAR */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--industrial-blue); padding: 15px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-family: 'Orbitron'; font-weight: 900; font-size: 1.5rem; color: #fff; letter-spacing: 2px; }
+        .logo span { color: var(--gear-orange); }
+        
+        .lang-nav { display: flex; gap: 10px; }
+        .lang-btn {
+            background: #1a1a1e; border: 1px solid #333; color: #aaa;
+            padding: 8px 18px; font-family: 'Orbitron'; font-size: 0.75rem;
+            cursor: pointer; transition: var(--transition);
+        }
+        .lang-btn:hover, .lang-btn.active { 
+            background: var(--industrial-blue); color: #fff; border-color: var(--industrial-blue);
+            box-shadow: 0 0 15px rgba(0, 71, 171, 0.5);
+        }
 
-    /* hero */
-    .hero{
-      padding: 76px 0 18px;
-    }
+        /* [5] HERO SECTION */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; background: radial-gradient(circle at center, #161a25 0%, #0a0a0c 100%);
+        }
+        .hero h1 { 
+            font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900;
+            color: #fff; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .hero p { font-size: 1.3rem; color: #777; max-width: 900px; margin-bottom: 50px; font-weight: 300; letter-spacing: 1px; }
+        
+        .scroll-down {
+            position: absolute; bottom: 40px; font-family: 'Orbitron'; font-size: 0.7rem;
+            color: var(--gear-orange); animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 16px;
-      border: 1px solid rgba(65,224,183,0.28);
-      background: rgba(65,224,183,0.10);
-      color: #c8fff2;
-      border-radius: 999px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.22);
-    }
+        /* [6] SECTION & LAYOUT */
+        section { padding: 120px 0; border-bottom: 1px solid var(--border-gray); }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; animation: fadeInUp 0.8s ease-out; }
+        @keyframes fadeInUp { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
 
-    .title{
-      margin: 18px 0 10px;
-      font-size: clamp(36px, 4.7vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.6px;
-      font-weight: 900;
-    }
-    .title .accent{
-      color: var(--accent);
-      text-shadow: 0 0 22px rgba(65,224,183,0.22);
-    }
+        .section-header { margin-bottom: 80px; }
+        .section-header h2 { font-family: 'Orbitron'; font-size: 2.8rem; color: #fff; margin-bottom: 15px; }
+        .section-header .line { width: 80px; height: 4px; background: var(--gear-orange); }
 
-    .desc{
-      margin: 16px 0 0;
-      max-width: 760px;
-      font-size: 18px;
-      line-height: 1.65;
-      color: var(--muted);
-    }
-    .desc strong{
-      color: var(--text);
-      font-weight: 900;
-    }
+        .parts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .part-card {
+            background: #111115; border: 1px solid #222; padding: 45px;
+            transition: var(--transition); position: relative;
+        }
+        .part-card:hover { 
+            background: #16161c; border-color: var(--industrial-blue); 
+            transform: translateY(-10px);
+        }
+        .part-card h3 { font-family: 'Orbitron'; font-size: 1.4rem; margin-bottom: 15px; color: var(--industrial-blue); }
+        .part-num { font-family: 'Roboto Mono'; font-size: 0.8rem; color: var(--gear-orange); margin-bottom: 10px; display: block; }
 
-    /* cards grid */
-    .grid{
-      margin-top: 26px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 820px){
-      .grid{ grid-template-columns: 1fr; }
-      .hero{ padding-top: 70px; }
-    }
+        /* [7] SPECIFICATION TABLE */
+        .spec-container { margin-top: 80px; overflow-x: auto; }
+        .spec-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        .spec-table th { 
+            background: #1a1a1e; color: var(--gear-orange); font-family: 'Orbitron';
+            text-align: left; padding: 20px; font-size: 0.9rem;
+        }
+        .spec-table td { padding: 20px; border-bottom: 1px solid #1a1a1e; font-size: 0.95rem; }
 
-    .card{
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow);
-    }
-    .card h3{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.2px;
-      color: #bffef0;
-      font-weight: 900;
-    }
-    .card ul{
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    .card li{ margin: 8px 0; }
+        /* [8] GLOBAL SUPPLY CHAIN MAP AREA */
+        .map-section { background: rgba(0, 71, 171, 0.03); padding: 100px 0; text-align: center; }
+        .map-box { 
+            border: 1px dashed var(--industrial-blue); padding: 60px; margin-top: 40px;
+            font-family: 'Roboto Mono'; color: #555;
+        }
 
-    .flow{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .step{
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.86);
-      font-size: 13px;
-      user-select:none;
-    }
+        /* [9] FOOTER */
+        footer { padding: 100px 0; background: #050507; border-top: 2px solid var(--industrial-blue); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-info h4 { font-family: 'Orbitron'; margin-bottom: 25px; color: #fff; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; font-size: 0.9rem; color: #666; cursor: pointer; }
+        .footer-links li:hover { color: var(--industrial-blue); }
+        
+        .contact-large { font-family: 'Orbitron'; font-size: 2rem; color: var(--gear-orange); text-decoration: none; margin: 30px 0; display: block; }
 
-    .btnrow{
-      margin-top: 18px;
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .btn{
-      border: 1px solid rgba(65,224,183,0.30);
-      background: rgba(65,224,183,0.12);
-      color: #dffcf4;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 900;
-      cursor:pointer;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-    }
-    .btn:hover{ background: rgba(65,224,183,0.16); border-color: rgba(65,224,183,0.45); }
-    .btn:active{ transform: scale(0.99); }
-
-    .btn.secondary{
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.88);
-    }
-    .btn.secondary:hover{
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.22);
-    }
-
-    footer{
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      color: var(--soft);
-      font-size: 14px;
-      display:flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .contact{
-      color: rgba(255,255,255,0.82);
-      font-weight: 800;
-    }
-    .small{ color: var(--soft); }
-
-    /* language blocks */
-    .lang{ display:none; }
-    .lang.show{ display:block; }
-
-    /* RTL for Arabic */
-    body.rtl{
-      direction: rtl;
-      text-align: right;
-    }
-    body.rtl .topbar{ left: 12px; right: auto; }
-    body.rtl .flow{ justify-content: flex-end; }
-    body.rtl .card ul{ padding-right: 18px; padding-left: 0; }
-  </style>
+        /* [10] RTL FOR ARABIC */
+        .rtl { direction: rtl; text-align: right; }
+    </style>
 </head>
+<body onload="initApp()">
 
-<body>
-  <!-- language switch -->
-  <div class="topbar" aria-label="Language Switch">
-    <button class="langbtn" id="btn-kr" onclick="setLang('kr')">KR</button>
-    <button class="langbtn" id="btn-en" onclick="setLang('en')">EN</button>
-    <button class="langbtn" id="btn-ar" onclick="setLang('ar')">AR</button>
-  </div>
+    <div class="blueprint-bg"></div>
 
-  <div class="wrap">
+    <nav>
+        <div class="logo">HK-<span>PARTS</span></div>
+        <div class="lang-nav">
+            <button class="lang-btn active" onclick="changeLang('en', this)">ENGLISH</button>
+            <button class="lang-btn" onclick="changeLang('kr', this)">한국어</button>
+            <button class="lang-btn" onclick="changeLang('cn', this)">中文</button>
+            <button class="lang-btn" onclick="changeLang('ar', this)">العربية</button>
+        </div>
+    </nav>
+
     <section class="hero">
-
-      <!-- KR -->
-      <div class="lang" id="lang-kr">
-        <div class="pill">중개 · 소싱 · 물류 · 표준</div>
-
-        <div class="title">
-          로봇 시대의<br/>
-          <span class="accent">부품 은행</span>을 만듭니다.
-        </div>
-
-        <p class="desc">
-          <strong>PHK PartsBank</strong>는 전 세계 제조사와 구매자를 직접 연결하는
-          산업 부품 거래 플랫폼입니다.<br/>
-          우리는 비전을 설명하지 않고, <strong>부품을 연결해 현금흐름을 만듭니다.</strong>
-        </p>
-
-        <div class="grid">
-          <div class="card">
-            <h3>무엇을 해결합니까</h3>
-            <ul>
-              <li>검증된 공급사와 구매자 직접 연결</li>
-              <li>중개 비용·시간·불확실성 제거</li>
-              <li>표준 기반 견적과 투명한 가격</li>
-              <li>확장 가능한 글로벌 물류 연계</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>거래는 이렇게 진행됩니다</h3>
-            <div class="flow" aria-label="Flow Steps">
-              <div class="step">부품 등록</div>
-              <div class="step">견적 요청</div>
-              <div class="step">매칭·검증</div>
-              <div class="step">거래·물류</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>초기 집중 영역</h3>
-            <ul>
-              <li>로봇·자동화 핵심 부품</li>
-              <li>산업용 모터·액추에이터·센서</li>
-              <li>전력·제어·모듈 부품</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>확장 경로</h3>
-            <ul>
-              <li>에너지·인프라 부품</li>
-              <li>우주·특수 산업 부품</li>
-              <li>표준·데이터 기반 B2B 마켓</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="btnrow">
-          <button class="btn" onclick="openMail()">공급사로 참여</button>
-          <button class="btn secondary" onclick="openMail()">구매 문의</button>
-        </div>
-      </div>
-
-      <!-- EN -->
-      <div class="lang" id="lang-en">
-        <div class="pill">Brokerage · Sourcing · Logistics · Standards</div>
-
-        <div class="title">
-          Building the<br/>
-          <span class="accent">Parts Bank</span> for the Robot Era.
-        </div>
-
-        <p class="desc">
-          <strong>PHK PartsBank</strong> is an industrial parts trading platform
-          that directly connects global manufacturers and buyers.<br/>
-          We don’t sell visions — <strong>we connect parts and create cashflow.</strong>
-        </p>
-
-        <div class="grid">
-          <div class="card">
-            <h3>What We Solve</h3>
-            <ul>
-              <li>Direct matching between verified suppliers and buyers</li>
-              <li>Remove broker friction: cost, time, and uncertainty</li>
-              <li>Standard-based quotations and transparent pricing</li>
-              <li>Scalable global logistics integration</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>How Transactions Work</h3>
-            <div class="flow" aria-label="Flow Steps">
-              <div class="step">List Parts</div>
-              <div class="step">Request Quote</div>
-              <div class="step">Match & Verify</div>
-              <div class="step">Deal & Logistics</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Initial Focus</h3>
-            <ul>
-              <li>Core parts for robotics & automation</li>
-              <li>Industrial motors, actuators, sensors</li>
-              <li>Power, control, and modular components</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Expansion Path</h3>
-            <ul>
-              <li>Energy & infrastructure components</li>
-              <li>Space & special-industry components</li>
-              <li>Standards + data-driven B2B marketplace</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="btnrow">
-          <button class="btn" onclick="openMail()">Join as Supplier</button>
-          <button class="btn secondary" onclick="openMail()">Buyer Inquiry</button>
-        </div>
-      </div>
-
-      <!-- AR -->
-      <div class="lang" id="lang-ar">
-        <div class="pill">الوساطة · التوريد · الخدمات اللوجستية · المعايير</div>
-
-        <div class="title">
-          نبني<br/>
-          <span class="accent">بنك القطع</span> لعصر الروبوتات.
-        </div>
-
-        <p class="desc">
-          <strong>PHK PartsBank</strong> منصة لتجارة القطع الصناعية تربط المصنعين والمشترين حول العالم بشكل مباشر.<br/>
-          نحن لا نبيع الوعود — <strong>نربط القطع ونصنع التدفق النقدي.</strong>
-        </p>
-
-        <div class="grid">
-          <div class="card">
-            <h3>ما الذي نحلّه</h3>
-            <ul>
-              <li>ربط مباشر بين مورّدين ومشترين موثوقين</li>
-              <li>إزالة تكلفة ووقت وتعقيد الوسطاء</li>
-              <li>عروض أسعار مبنية على معايير وتسعير شفاف</li>
-              <li>تكامل لوجستي عالمي قابل للتوسع</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>كيف تتم المعاملة</h3>
-            <div class="flow" aria-label="Flow Steps">
-              <div class="step">إدراج القطع</div>
-              <div class="step">طلب عرض سعر</div>
-              <div class="step">مطابقة وتحقق</div>
-              <div class="step">صفقة وشحن</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>التركيز الأولي</h3>
-            <ul>
-              <li>قطع أساسية للروبوتات والأتمتة</li>
-              <li>محركات صناعية ومشغلات وحساسات</li>
-              <li>مكوّنات الطاقة والتحكم والوحدات</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>مسار التوسع</h3>
-            <ul>
-              <li>مكوّنات الطاقة والبنية التحتية</li>
-              <li>مكوّنات الفضاء والصناعات الخاصة</li>
-              <li>سوق B2B قائم على المعايير والبيانات</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="btnrow">
-          <button class="btn" onclick="openMail()">انضم كمورّد</button>
-          <button class="btn secondary" onclick="openMail()">استفسار للمشتري</button>
-        </div>
-      </div>
-
-      <footer>
-        <div class="contact">Contact: <a href="mailto:info@phkbank.com">info@phkbank.com</a></div>
-        <div class="small">© PHK Global / PHK PartsBank</div>
-      </footer>
-
+        <p id="hero-tag">PRECISION ENGINEERING REDEFINED</p>
+        <h1 id="hero-main">TOTAL COMPONENT SOLUTIONS</h1>
+        <p>From micro-actuators for Figure AI to heavy-duty fusion reactor cores. HK-PARTS provides the essential DNA for the next industrial revolution led by Chairman Hye-Gong.</p>
+        <div class="scroll-down">EXPLORE INVENTORY</div>
     </section>
-  </div>
 
-  <script>
-    function openMail(){
-      window.location.href = "mailto:info@phkbank.com?subject=PHK%20PartsBank%20Inquiry";
-    }
+    <div id="en" class="lang-content active">
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>01. Core Business Units</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="parts-grid">
+                    <div class="part-card">
+                        <span class="part-num">#RB-7700-ACT</span>
+                        <h3>Robotic Actuators</h3>
+                        <p>High-torque harmonic drives designed for the Figure AI series. Providing 0.001mm precision for delicate humanoid movements.</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#AS-01-COIL</span>
+                        <h3>Superconducting Coils</h3>
+                        <p>Ultra-low temperature magnetic coils for stable plasma confinement in HK-Fusion reactors.</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#SP-X-ALLOY</span>
+                        <h3>Aerospace Alloys</h3>
+                        <p>Titanium-Graphene composite materials for HK-Space rocket nozzles. Heat resistance up to 3,500°C.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    function setActiveBtn(lang){
-      const langs = ['kr','en','ar'];
-      langs.forEach(l => {
-        const b = document.getElementById('btn-' + l);
-        if(!b) return;
-        b.classList.toggle('active', l === lang);
-      });
-    }
+        <section style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <h2>Technical Specifications</h2>
+                
+                <div class="spec-container">
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>COMPONENT ID</th>
+                                <th>MATERIAL TYPE</th>
+                                <th>TOLERANCE</th>
+                                <th>APPLICATION</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>HK-P102-G</td><td>Ceramic-Titanium</td><td>±0.0005mm</td><td>Figure AI Joints</td><td>Mass Production</td></tr>
+                            <tr><td>HK-F509-C</td><td>Nb3Sn Superconductor</td><td>±0.01mm</td><td>Tokamak Magnetic Field</td><td>QC Phase</td></tr>
+                            <tr><td>HK-S880-W</td><td>Tungsten Carb-X</td><td>±0.05mm</td><td>Spacecraft Heat Shield</td><td>R&D</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    function showLang(lang){
-      const ids = ['kr','en','ar'];
-      ids.forEach(id => {
-        const el = document.getElementById('lang-' + id);
-        if(!el) return;
-        el.classList.toggle('show', id === lang);
-      });
+    <div id="kr" class="lang-content">
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>01. 핵심 사업부</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="parts-grid">
+                    <div class="part-card">
+                        <span class="part-num">#RB-7700-ACT</span>
+                        <h3>로봇 액추에이터</h3>
+                        <p>Figure AI 휴머노이드의 정밀 관절을 위한 고토크 하모닉 드라이브. 인간의 미세한 움직임을 완벽하게 재현합니다.</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#AS-01-COIL</span>
+                        <h3>초전도 자기 코일</h3>
+                        <p>HK-Fusion 인공태양의 플라즈마를 가두기 위한 핵심 부품. 영하 269도에서도 완벽한 성능을 유지합니다.</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#SP-X-ALLOY</span>
+                        <h3>우주 항공 특수 합금</h3>
+                        <p>HK-Space의 심우주 탐사선을 위한 티타늄-그래핀 복합재. 극한의 우주 환경에서도 변형되지 않는 강성을 자랑합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      // RTL handling
-      document.body.classList.toggle('rtl', lang === 'ar');
+        <section>
+            <div class="container">
+                <h2>글로벌 공급망 로드맵</h2>
+                <div class="map-box">
+                    > SEOUL HQ: R&D and Precision Control Systems<br>
+                    > SHANGHAI PLANT: Mass Component Casting & Forging<br>
+                    > DUBAI LOGISTICS: Global Distribution Hub for MENA Region<br>
+                    > NEOM SITE: Dedicated Production for Smart City Infrastructure<br>
+                    > STATUS: <span style="color: lime;">SUPPLY CHAIN OPTIMIZED</span>
+                </div>
+            </div>
+        </section>
+    </div>
 
-      // html lang attribute
-      document.documentElement.lang = (lang === 'kr') ? 'ko' : (lang === 'ar' ? 'ar' : 'en');
+    <div id="cn" class="lang-content">
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="font-family: 'Noto Sans SC';">01. 核心业务部门</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="parts-grid">
+                    <div class="part-card">
+                        <span class="part-num">#RB-7700-ACT</span>
+                        <h3>机器人执行器</h3>
+                        <p>专为 Figure AI 系列设计的高转矩谐波减速机。为人形机器人的精密动作提供 0.001mm 的定位精度。</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#AS-01-COIL</span>
+                        <h3>超导磁线圈</h3>
+                        <p>用于 HK-Fusion 反应堆稳定等离子体约束的超低温磁线圈。</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#SP-X-ALLOY</span>
+                        <h3>航空航天合金</h3>
+                        <p>HK-Space 火箭喷管专用的钛-石墨烯复合材料。耐热高达 3,500°C。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-      setActiveBtn(lang);
-    }
+    <div id="ar" class="lang-content rtl">
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>٠١. وحدات الأعمال الأساسية</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="grid">
+                    <div class="part-card">
+                        <span class="part-num">#RB-7700-ACT</span>
+                        <h3>المحركات الروبوتية</h3>
+                        <p>محركات التوافقي عالية العزم المصممة لسلسلة Figure AI. توفر دقة تبلغ ٠.٠٠١ ملم لحركات الروبوتات الدقيقة.</p>
+                    </div>
+                    <div class="part-card">
+                        <span class="part-num">#AS-01-COIL</span>
+                        <h3>ملفات التوصيل الفائق</h3>
+                        <p>ملفات مغناطيسية ذات درجة حرارة منخفضة للغاية لاحتواء البلازما بشكل مستقر في مفاعلات HK-Fusion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    function detectDefaultLang(){
-      // 1) saved
-      const saved = localStorage.getItem('phk_lang');
-      if(saved === 'kr' || saved === 'en' || saved === 'ar') return saved;
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo">HK-<span>PARTS</span></div>
+                    <p style="margin-top: 20px; color: #555; font-size: 0.9rem;">The backbone of future industries. Providing precision, durability, and innovation for all HK-Group sectors.</p>
+                    <a href="mailto:info@hkparts.com" class="contact-large">info@hkparts.com</a>
+                </div>
+                <div>
+                    <h4>Sections</h4>
+                    <ul class="footer-links">
+                        <li>Robotics Division</li>
+                        <li>Fusion Materials</li>
+                        <li>Aerospace Casting</li>
+                        <li>Precision Lab</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Global</h4>
+                    <ul class="footer-links">
+                        <li>Korea Branch</li>
+                        <li>China Manufacturing</li>
+                        <li>Middle East Hub</li>
+                        <li>USA Logistics</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li>Terms of Sale</li>
+                        <li>Patent Info</li>
+                        <li>ISO Certificates</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; color: #333; font-size: 0.8rem; border-top: 1px solid #111; padding-top: 40px;">
+                &copy; 2026 HK-PARTS INDUSTRIAL GROUP. ALL RIGHTS RESERVED BY HYE-GONG HYUNG-NIM. <br>
+                ENGINEERED BY BINI. GLOBAL SUPPLY CHAIN STATUS: ONLINE.
+            </p>
+        </div>
+    </footer>
 
-      // 2) browser
-      const nav = (navigator.language || '').toLowerCase();
-      if(nav.startsWith('ko')) return 'kr';
-      if(nav.startsWith('ar')) return 'ar';
-      return 'en';
-    }
+    <script>
+        // [1] Language Switcher
+        function changeLang(lang, btn) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-    function setLang(lang){
-      localStorage.setItem('phk_lang', lang);
-      showLang(lang);
-    }
+            document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(lang).classList.add('active');
 
-    // init
-    (function init(){
-      const lang = detectDefaultLang();
-      showLang(lang);
-    })();
-  </script>
+            // Dynamic Styling for Arabic
+            if(lang === 'ar') {
+                document.body.classList.add('rtl');
+            } else {
+                document.body.classList.remove('rtl');
+            }
+
+            // Sync Hero Texts
+            const heroData = {
+                en: { tag: "PRECISION ENGINEERING REDEFINED", main: "TOTAL COMPONENT SOLUTIONS" },
+                kr: { tag: "정밀 공학의 새로운 기준", main: "통합 부품 솔루션" },
+                cn: { tag: "重新定义精密工程", main: "全面零件解决方案" },
+                ar: { tag: "إعادة تعريف الهندسة الدقيقة", main: "حلول المكونات الكاملة" }
+            };
+            document.getElementById('hero-tag').innerText = heroData[lang].tag;
+            document.getElementById('hero-main').innerText = heroData[lang].main;
+        }
+
+        // [2] Reveal on Scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.part-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if(cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                }
+            });
+        });
+
+        function initApp() {
+            console.log("HK-PARTS SYSTEM INITIALIZED. WELCOME CHAIRMAN HYE-GONG.");
+            // Initial Animation Setup
+            document.querySelectorAll('.part-card').forEach(c => c.style.opacity = '1');
+        }
+    </script>
 </body>
 </html>
