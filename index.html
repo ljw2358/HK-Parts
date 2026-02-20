@@ -1,388 +1,217 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HK-PARTS: Precision Engineering, Aerospace Components, and Robotic Actuators by Hye-Gong">
-    <title>HK-PARTS | The Standard of Precision</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+KR:wght@100;400;700&family=Noto+Sans+SC:wght@100;400;700&family=Noto+Sans+Arabic:wght@100;400;700&family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
-    
-    <style>
-        /* [1] SYSTEM VARIABLES - 산업적인 금속 느낌의 팔레트 */
-        :root {
-            --metal-silver: #e0e0e0;
-            --industrial-blue: #0047AB;
-            --gear-orange: #FF8C00;
-            --factory-dark: #0a0a0c;
-            --border-gray: rgba(255, 255, 255, 0.1);
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK-PartsBank | Strategic Industrial Supply Infrastructure</title>
 
-        /* [2] GLOBAL STYLES */
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-        html { scroll-behavior: smooth; }
-        body { 
-            background-color: var(--factory-dark); 
-            color: var(--metal-silver); 
-            font-family: 'Noto Sans KR', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.7;
-        }
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:radial-gradient(circle at top,#111c2e,#050a14 70%);
+color:#e8f6ff;
+overflow-x:hidden;
+}
 
-        /* [3] BACKGROUND DECORATION - 기계 도면 느낌 */
-        .blueprint-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 71, 171, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 71, 171, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-        }
+.container{
+max-width:1100px;
+margin:auto;
+padding:80px 30px;
+animation:fadeIn 1.2s ease-in-out;
+}
 
-        /* [4] NAVIGATION BAR */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(15px);
-            border-bottom: 2px solid var(--industrial-blue); padding: 15px 50px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-family: 'Orbitron'; font-weight: 900; font-size: 1.5rem; color: #fff; letter-spacing: 2px; }
-        .logo span { color: var(--gear-orange); }
-        
-        .lang-nav { display: flex; gap: 10px; }
-        .lang-btn {
-            background: #1a1a1e; border: 1px solid #333; color: #aaa;
-            padding: 8px 18px; font-family: 'Orbitron'; font-size: 0.75rem;
-            cursor: pointer; transition: var(--transition);
-        }
-        .lang-btn:hover, .lang-btn.active { 
-            background: var(--industrial-blue); color: #fff; border-color: var(--industrial-blue);
-            box-shadow: 0 0 15px rgba(0, 71, 171, 0.5);
-        }
+h1{
+font-size:54px;
+color:#00eaff;
+letter-spacing:2px;
+text-shadow:0 0 20px rgba(0,255,255,0.6);
+margin-bottom:10px;
+}
 
-        /* [5] HERO SECTION */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; background: radial-gradient(circle at center, #161a25 0%, #0a0a0c 100%);
-        }
-        .hero h1 { 
-            font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900;
-            color: #fff; text-transform: uppercase; margin-bottom: 20px;
-        }
-        .hero p { font-size: 1.3rem; color: #777; max-width: 900px; margin-bottom: 50px; font-weight: 300; letter-spacing: 1px; }
-        
-        .scroll-down {
-            position: absolute; bottom: 40px; font-family: 'Orbitron'; font-size: 0.7rem;
-            color: var(--gear-orange); animation: bounce 2s infinite;
-        }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+h2{
+color:#7ce3ff;
+margin-top:50px;
+}
 
-        /* [6] SECTION & LAYOUT */
-        section { padding: 120px 0; border-bottom: 1px solid var(--border-gray); }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .lang-content { display: none; }
-        .lang-content.active { display: block; animation: fadeInUp 0.8s ease-out; }
-        @keyframes fadeInUp { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
+p{
+line-height:1.8;
+font-size:18px;
+}
 
-        .section-header { margin-bottom: 80px; }
-        .section-header h2 { font-family: 'Orbitron'; font-size: 2.8rem; color: #fff; margin-bottom: 15px; }
-        .section-header .line { width: 80px; height: 4px; background: var(--gear-orange); }
+.buttons{
+position:fixed;
+top:20px;
+right:20px;
+}
 
-        .parts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .part-card {
-            background: #111115; border: 1px solid #222; padding: 45px;
-            transition: var(--transition); position: relative;
-        }
-        .part-card:hover { 
-            background: #16161c; border-color: var(--industrial-blue); 
-            transform: translateY(-10px);
-        }
-        .part-card h3 { font-family: 'Orbitron'; font-size: 1.4rem; margin-bottom: 15px; color: var(--industrial-blue); }
-        .part-num { font-family: 'Roboto Mono'; font-size: 0.8rem; color: var(--gear-orange); margin-bottom: 10px; display: block; }
+button{
+background:transparent;
+border:1px solid #00eaff;
+color:#00eaff;
+padding:8px 16px;
+margin-left:8px;
+cursor:pointer;
+transition:0.3s;
+}
 
-        /* [7] SPECIFICATION TABLE */
-        .spec-container { margin-top: 80px; overflow-x: auto; }
-        .spec-table { width: 100%; border-collapse: collapse; min-width: 800px; }
-        .spec-table th { 
-            background: #1a1a1e; color: var(--gear-orange); font-family: 'Orbitron';
-            text-align: left; padding: 20px; font-size: 0.9rem;
-        }
-        .spec-table td { padding: 20px; border-bottom: 1px solid #1a1a1e; font-size: 0.95rem; }
+button:hover{
+background:#00eaff;
+color:#000;
+box-shadow:0 0 15px #00eaff;
+}
 
-        /* [8] GLOBAL SUPPLY CHAIN MAP AREA */
-        .map-section { background: rgba(0, 71, 171, 0.03); padding: 100px 0; text-align: center; }
-        .map-box { 
-            border: 1px dashed var(--industrial-blue); padding: 60px; margin-top: 40px;
-            font-family: 'Roboto Mono'; color: #555;
-        }
+.footer{
+margin-top:80px;
+font-size:14px;
+opacity:0.6;
+}
 
-        /* [9] FOOTER */
-        footer { padding: 100px 0; background: #050507; border-top: 2px solid var(--industrial-blue); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-info h4 { font-family: 'Orbitron'; margin-bottom: 25px; color: #fff; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; font-size: 0.9rem; color: #666; cursor: pointer; }
-        .footer-links li:hover { color: var(--industrial-blue); }
-        
-        .contact-large { font-family: 'Orbitron'; font-size: 2rem; color: var(--gear-orange); text-decoration: none; margin: 30px 0; display: block; }
-
-        /* [10] RTL FOR ARABIC */
-        .rtl { direction: rtl; text-align: right; }
-    </style>
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
-<body onload="initApp()">
 
-    <div class="blueprint-bg"></div>
+<body>
 
-    <nav>
-        <div class="logo">HK-<span>PARTS</span></div>
-        <div class="lang-nav">
-            <button class="lang-btn active" onclick="changeLang('en', this)">ENGLISH</button>
-            <button class="lang-btn" onclick="changeLang('kr', this)">한국어</button>
-            <button class="lang-btn" onclick="changeLang('cn', this)">中文</button>
-            <button class="lang-btn" onclick="changeLang('ar', this)">العربية</button>
-        </div>
-    </nav>
+<div class="buttons">
+<button onclick="setLang('en')">English</button>
+<button onclick="setLang('ko')">한국어</button>
+<button onclick="setLang('zh')">中文</button>
+<button onclick="setLang('ar')">العربية</button>
+</div>
 
-    <section class="hero">
-        <p id="hero-tag">PRECISION ENGINEERING REDEFINED</p>
-        <h1 id="hero-main">TOTAL COMPONENT SOLUTIONS</h1>
-        <p>From micro-actuators for Figure AI to heavy-duty fusion reactor cores. HK-PARTS provides the essential DNA for the next industrial revolution led by Chairman Hye-Gong.</p>
-        <div class="scroll-down">EXPLORE INVENTORY</div>
-    </section>
+<div class="container" id="content"></div>
 
-    <div id="en" class="lang-content active">
-        <section>
-            <div class="container">
-                <div class="section-header">
-                    <h2>01. Core Business Units</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="parts-grid">
-                    <div class="part-card">
-                        <span class="part-num">#RB-7700-ACT</span>
-                        <h3>Robotic Actuators</h3>
-                        <p>High-torque harmonic drives designed for the Figure AI series. Providing 0.001mm precision for delicate humanoid movements.</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#AS-01-COIL</span>
-                        <h3>Superconducting Coils</h3>
-                        <p>Ultra-low temperature magnetic coils for stable plasma confinement in HK-Fusion reactors.</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#SP-X-ALLOY</span>
-                        <h3>Aerospace Alloys</h3>
-                        <p>Titanium-Graphene composite materials for HK-Space rocket nozzles. Heat resistance up to 3,500°C.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<script>
 
-        <section style="background: rgba(0,0,0,0.2);">
-            <div class="container">
-                <h2>Technical Specifications</h2>
-                
-                <div class="spec-container">
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>COMPONENT ID</th>
-                                <th>MATERIAL TYPE</th>
-                                <th>TOLERANCE</th>
-                                <th>APPLICATION</th>
-                                <th>STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>HK-P102-G</td><td>Ceramic-Titanium</td><td>±0.0005mm</td><td>Figure AI Joints</td><td>Mass Production</td></tr>
-                            <tr><td>HK-F509-C</td><td>Nb3Sn Superconductor</td><td>±0.01mm</td><td>Tokamak Magnetic Field</td><td>QC Phase</td></tr>
-                            <tr><td>HK-S880-W</td><td>Tungsten Carb-X</td><td>±0.05mm</td><td>Spacecraft Heat Shield</td><td>R&D</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </div>
+const translations = {
 
-    <div id="kr" class="lang-content">
-        <section>
-            <div class="container">
-                <div class="section-header">
-                    <h2>01. 핵심 사업부</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="parts-grid">
-                    <div class="part-card">
-                        <span class="part-num">#RB-7700-ACT</span>
-                        <h3>로봇 액추에이터</h3>
-                        <p>Figure AI 휴머노이드의 정밀 관절을 위한 고토크 하모닉 드라이브. 인간의 미세한 움직임을 완벽하게 재현합니다.</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#AS-01-COIL</span>
-                        <h3>초전도 자기 코일</h3>
-                        <p>HK-Fusion 인공태양의 플라즈마를 가두기 위한 핵심 부품. 영하 269도에서도 완벽한 성능을 유지합니다.</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#SP-X-ALLOY</span>
-                        <h3>우주 항공 특수 합금</h3>
-                        <p>HK-Space의 심우주 탐사선을 위한 티타늄-그래핀 복합재. 극한의 우주 환경에서도 변형되지 않는 강성을 자랑합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+en: `
+<h1>HK-PartsBank</h1>
+<p><strong>Powering Industry Through Strategic Component Intelligence.</strong></p>
 
-        <section>
-            <div class="container">
-                <h2>글로벌 공급망 로드맵</h2>
-                <div class="map-box">
-                    > SEOUL HQ: R&D and Precision Control Systems<br>
-                    > SHANGHAI PLANT: Mass Component Casting & Forging<br>
-                    > DUBAI LOGISTICS: Global Distribution Hub for MENA Region<br>
-                    > NEOM SITE: Dedicated Production for Smart City Infrastructure<br>
-                    > STATUS: <span style="color: lime;">SUPPLY CHAIN OPTIMIZED</span>
-                </div>
-            </div>
-        </section>
-    </div>
+<h2>Corporate Overview</h2>
+<p>HK-PartsBank is a global industrial supply and strategic components infrastructure platform serving aerospace, defense, robotics, energy, and advanced manufacturing sectors.</p>
 
-    <div id="cn" class="lang-content">
-        <section>
-            <div class="container">
-                <div class="section-header">
-                    <h2 style="font-family: 'Noto Sans SC';">01. 核心业务部门</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="parts-grid">
-                    <div class="part-card">
-                        <span class="part-num">#RB-7700-ACT</span>
-                        <h3>机器人执行器</h3>
-                        <p>专为 Figure AI 系列设计的高转矩谐波减速机。为人形机器人的精密动作提供 0.001mm 的定位精度。</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#AS-01-COIL</span>
-                        <h3>超导磁线圈</h3>
-                        <p>用于 HK-Fusion 反应堆稳定等离子体约束的超低温磁线圈。</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#SP-X-ALLOY</span>
-                        <h3>航空航天合金</h3>
-                        <p>HK-Space 火箭喷管专用的钛-石墨烯复合材料。耐热高达 3,500°C。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+<p>We provide high-reliability certified components, supply-chain intelligence, and scalable procurement ecosystems aligned with sovereign industrial and national security standards.</p>
 
-    <div id="ar" class="lang-content rtl">
-        <section>
-            <div class="container">
-                <div class="section-header">
-                    <h2>٠١. وحدات الأعمال الأساسية</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="grid">
-                    <div class="part-card">
-                        <span class="part-num">#RB-7700-ACT</span>
-                        <h3>المحركات الروبوتية</h3>
-                        <p>محركات التوافقي عالية العزم المصممة لسلسلة Figure AI. توفر دقة تبلغ ٠.٠٠١ ملم لحركات الروبوتات الدقيقة.</p>
-                    </div>
-                    <div class="part-card">
-                        <span class="part-num">#AS-01-COIL</span>
-                        <h3>ملفات التوصيل الفائق</h3>
-                        <p>ملفات مغناطيسية ذات درجة حرارة منخفضة للغاية لاحتواء البلازما بشكل مستقر في مفاعلات HK-Fusion.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+<h2>Core Capabilities</h2>
+<p>
+• Aerospace & Defense Components<br>
+• Industrial & Robotics Parts Distribution<br>
+• Strategic Supply Chain Integration<br>
+• High-Reliability Electronic & Mechanical Modules<br>
+• Global Procurement & Compliance Solutions
+</p>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <div class="logo">HK-<span>PARTS</span></div>
-                    <p style="margin-top: 20px; color: #555; font-size: 0.9rem;">The backbone of future industries. Providing precision, durability, and innovation for all HK-Group sectors.</p>
-                    <a href="mailto:info@hkparts.com" class="contact-large">info@hkparts.com</a>
-                </div>
-                <div>
-                    <h4>Sections</h4>
-                    <ul class="footer-links">
-                        <li>Robotics Division</li>
-                        <li>Fusion Materials</li>
-                        <li>Aerospace Casting</li>
-                        <li>Precision Lab</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Global</h4>
-                    <ul class="footer-links">
-                        <li>Korea Branch</li>
-                        <li>China Manufacturing</li>
-                        <li>Middle East Hub</li>
-                        <li>USA Logistics</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li>Terms of Sale</li>
-                        <li>Patent Info</li>
-                        <li>ISO Certificates</li>
-                        <li>Privacy Policy</li>
-                    </ul>
-                </div>
-            </div>
-            <p style="text-align: center; color: #333; font-size: 0.8rem; border-top: 1px solid #111; padding-top: 40px;">
-                &copy; 2026 HK-PARTS INDUSTRIAL GROUP. ALL RIGHTS RESERVED BY HYE-GONG HYUNG-NIM. <br>
-                ENGINEERED BY BINI. GLOBAL SUPPLY CHAIN STATUS: ONLINE.
-            </p>
-        </div>
-    </footer>
+<h2>Technology & Infrastructure Edge</h2>
+<p>Our platform integrates AI-driven inventory forecasting, secure supplier verification, and mission-critical logistics optimization to ensure resilient global supply continuity.</p>
 
-    <script>
-        // [1] Language Switcher
-        function changeLang(lang, btn) {
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+<h2>Investment Thesis</h2>
+<p>The global defense and advanced manufacturing sectors require stable, transparent, and secure component ecosystems. HK-PartsBank is positioned as a <strong>strategic supply infrastructure provider</strong> enabling long-term industrial sovereignty and scalable global expansion.</p>
 
-            document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
-            document.getElementById(lang).classList.add('active');
+<div class="footer">Contact: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
+`,
 
-            // Dynamic Styling for Arabic
-            if(lang === 'ar') {
-                document.body.classList.add('rtl');
-            } else {
-                document.body.classList.remove('rtl');
-            }
+ko: `
+<h1>HK-PartsBank</h1>
+<p><strong>전략적 부품 인프라로 산업을 움직입니다.</strong></p>
 
-            // Sync Hero Texts
-            const heroData = {
-                en: { tag: "PRECISION ENGINEERING REDEFINED", main: "TOTAL COMPONENT SOLUTIONS" },
-                kr: { tag: "정밀 공학의 새로운 기준", main: "통합 부품 솔루션" },
-                cn: { tag: "重新定义精密工程", main: "全面零件解决方案" },
-                ar: { tag: "إعادة تعريف الهندسة الدقيقة", main: "حلول المكونات الكاملة" }
-            };
-            document.getElementById('hero-tag').innerText = heroData[lang].tag;
-            document.getElementById('hero-main').innerText = heroData[lang].main;
-        }
+<h2>기업 개요</h2>
+<p>HK-PartsBank는 항공우주, 방산, 로보틱스, 에너지 및 첨단 제조 산업을 위한 글로벌 산업 부품 공급 인프라 플랫폼입니다.</p>
 
-        // [2] Reveal on Scroll
-        window.addEventListener('scroll', () => {
-            const cards = document.querySelectorAll('.part-card');
-            cards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
-                if(cardTop < window.innerHeight - 100) {
-                    card.style.opacity = '1';
-                }
-            });
-        });
+<p>고신뢰 인증 부품, 공급망 인텔리전스, 확장형 조달 생태계를 통해 국가 전략 산업 기준에 부합하는 솔루션을 제공합니다.</p>
 
-        function initApp() {
-            console.log("HK-PARTS SYSTEM INITIALIZED. WELCOME CHAIRMAN HYE-GONG.");
-            // Initial Animation Setup
-            document.querySelectorAll('.part-card').forEach(c => c.style.opacity = '1');
-        }
-    </script>
+<h2>핵심 역량</h2>
+<p>
+• 항공·방산 부품 공급<br>
+• 산업·로봇 부품 유통<br>
+• 전략 공급망 통합 관리<br>
+• 고신뢰 전자·기계 모듈<br>
+• 글로벌 조달 및 규제 대응
+</p>
+
+<h2>기술 및 인프라 경쟁력</h2>
+<p>AI 기반 재고 예측, 보안 공급자 검증, 임무 중심 물류 최적화를 통해 안정적인 글로벌 공급 연속성을 보장합니다.</p>
+
+<h2>투자 포인트</h2>
+<p>방산 및 첨단 제조 산업은 안정적이고 투명한 부품 생태계를 요구합니다. HK-PartsBank는 <strong>전략적 산업 공급 인프라 기업</strong>으로서 장기적 산업 주권과 글로벌 확장성을 지원합니다.</p>
+
+<div class="footer">문의: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
+`,
+
+zh: `
+<h1>HK-PartsBank</h1>
+<p><strong>以战略级零部件基础设施驱动产业发展。</strong></p>
+
+<h2>公司概述</h2>
+<p>HK-PartsBank 是面向航天、国防、机器人、能源及先进制造领域的全球工业零部件供应平台。</p>
+
+<p>我们提供高可靠认证部件、供应链智能系统及可扩展采购生态，满足国家级产业与安全标准。</p>
+
+<h2>核心能力</h2>
+<p>
+• 航空航天与国防部件<br>
+• 工业与机器人零件分销<br>
+• 战略供应链整合<br>
+• 高可靠电子与机械模块<br>
+• 全球采购与合规解决方案
+</p>
+
+<h2>技术优势</h2>
+<p>通过 AI 库存预测、安全供应商验证与关键物流优化，实现稳定可靠的全球供应连续性。</p>
+
+<h2>投资价值</h2>
+<p>国防与先进制造行业对安全稳定的零部件体系需求不断提升。HK-PartsBank 定位为<strong>战略供应基础设施提供商</strong>，支持产业主权与全球扩展。</p>
+
+<div class="footer">联系: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
+`,
+
+ar: `
+<h1>HK-PartsBank</h1>
+<p><strong>نُمكّن الصناعة عبر بنية تحتية استراتيجية للمكونات.</strong></p>
+
+<h2>نظرة عامة</h2>
+<p>HK-PartsBank منصة عالمية لتوريد المكونات الصناعية تخدم قطاعات الطيران والدفاع والروبوتات والطاقة والتصنيع المتقدم.</p>
+
+<p>نوفر مكونات معتمدة عالية الموثوقية وأنظمة ذكية لسلاسل الإمداد تلبي معايير الصناعات الاستراتيجية والأمن الوطني.</p>
+
+<h2>القدرات الأساسية</h2>
+<p>
+• مكونات الطيران والدفاع<br>
+• توزيع قطع الروبوتات والصناعة<br>
+• تكامل سلاسل الإمداد الاستراتيجية<br>
+• وحدات إلكترونية وميكانيكية عالية الاعتمادية<br>
+• حلول شراء عالمية والامتثال التنظيمي
+</p>
+
+<h2>الميزة التقنية</h2>
+<p>تعتمد منصتنا على الذكاء الاصطناعي لتوقع المخزون والتحقق من الموردين وتحسين الخدمات اللوجستية لضمان استمرارية الإمداد العالمية.</p>
+
+<h2>فرصة الاستثمار</h2>
+<p>تتطلب قطاعات الدفاع والتصنيع المتقدم أنظمة توريد مستقرة وآمنة. تتموضع HK-PartsBank كمزود<strong>لبنية تحتية استراتيجية لسلاسل الإمداد</strong> تدعم السيادة الصناعية والتوسع العالمي.</p>
+
+<div class="footer">البريد: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
+`
+};
+
+function setLang(lang){
+document.getElementById("content").innerHTML = translations[lang];
+if(lang==="ar"){document.body.dir="rtl";}
+else{document.body.dir="ltr";}
+}
+
+function autoDetect(){
+let l=navigator.language.substring(0,2);
+if(translations[l]){setLang(l);} else{setLang("en");}
+}
+
+autoDetect();
+
+</script>
+
 </body>
 </html>
