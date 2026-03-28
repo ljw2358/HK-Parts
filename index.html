@@ -1,216 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HK-PartsBank | Strategic Industrial Supply Infrastructure</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartsBank | Future of UAM & Logistics</title>
+    <style>
+        :root {
+            --primary-bg: #0a0a12;
+            --accent-blue: #3a86ff;
+            --text-gray: #a0a0c0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+        body {
+            margin: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: var(--primary-bg);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        /* Language Selector */
+        .lang-selector {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .lang-btn {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
 
-<style>
-body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background:radial-gradient(circle at top,#111c2e,#050a14 70%);
-color:#e8f6ff;
-overflow-x:hidden;
-}
+        /* Hero Section */
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:80px 30px;
-animation:fadeIn 1.2s ease-in-out;
-}
+        /* Features Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, border 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            background: rgba(58, 134, 255, 0.1);
+        }
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
 
-h1{
-font-size:54px;
-color:#00eaff;
-letter-spacing:2px;
-text-shadow:0 0 20px rgba(0,255,255,0.6);
-margin-bottom:10px;
-}
+        /* Contact Section */
+        .contact-section {
+            margin-top: 100px;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
+            border-radius: 30px 30px 0 0;
+        }
+        .contact-email {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 5px;
+            transition: 0.3s;
+        }
+        .contact-email:hover {
+            color: #fff;
+            border-color: #fff;
+        }
 
-h2{
-color:#7ce3ff;
-margin-top:50px;
-}
-
-p{
-line-height:1.8;
-font-size:18px;
-}
-
-.buttons{
-position:fixed;
-top:20px;
-right:20px;
-}
-
-button{
-background:transparent;
-border:1px solid #00eaff;
-color:#00eaff;
-padding:8px 16px;
-margin-left:8px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#00eaff;
-color:#000;
-box-shadow:0 0 15px #00eaff;
-}
-
-.footer{
-margin-top:80px;
-font-size:14px;
-opacity:0.6;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
-</style>
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeInUp 0.8s ease forwards; }
+    </style>
 </head>
-
 <body>
 
-<div class="buttons">
-<button onclick="setLang('en')">English</button>
-<button onclick="setLang('ko')">한국어</button>
-<button onclick="setLang('zh')">中文</button>
-<button onclick="setLang('ar')">العربية</button>
+<div class="container">
+    <div class="lang-selector">
+        <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+        <button class="lang-btn" onclick="setLang('en')">English</button>
+        <button class="lang-btn" onclick="setLang('zh')">中文</button>
+        <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+        <button class="lang-btn" onclick="setLang('hi')">हिन्दी</button>
+        <button class="lang-btn" onclick="setLang('es')">Español</button>
+        <button class="lang-btn" onclick="setLang('pt')">Português</button>
+        <button class="lang-btn" onclick="setLang('uk')">Українська</button>
+        <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+        <button class="lang-btn" onclick="setLang('ru')">Русский</button>
+    </div>
+
+    <header class="animate">
+        <h1 id="main-title">UAM 혁신</h1>
+        <p class="subtitle" id="main-desc">도시의 경계를 넘어, 하늘을 자유롭게 연결하는 차세대 에어 모빌리티 솔루션입니다.</p>
+    </header>
+
+    <div class="grid animate" style="animation-delay: 0.2s;">
+        <div class="card">
+            <span class="icon">🚀</span>
+            <h3 id="f1-t">eVTOL 항공기</h3>
+            <p id="f1-d">수직 이착륙 기술로 활주로 없는 도심 핵심부로의 정밀한 이동을 실현합니다.</p>
+        </div>
+        <div class="card">
+            <span class="icon">🌿</span>
+            <h3 id="f2-t">무공해 이동</h3>
+            <p id="f2-d">100% 전기 추진 시스템을 사용하여 소음과 탄소 배출 없는 친환경 미래를 만듭니다.</p>
+        </div>
+        <div class="card">
+            <span class="icon">⚡</span>
+            <h3 id="f3-t">초고속 연결</h3>
+            <p id="f3-d">교통 체증 없는 하늘 길을 통해 도심 내 이동 시간을 최대 70% 단축합니다.</p>
+        </div>
+        <div class="card">
+            <span class="icon">🏙️</span>
+            <h3 id="f4-t">스마트 시티 연동</h3>
+            <p id="f4-d">AI 기반 통합 관제 시스템으로 지상 교통수단과 완벽하게 연결됩니다.</p>
+        </div>
+    </div>
+
+    <section class="contact-section animate" style="animation-delay: 0.4s;">
+        <h2 id="contact-title" style="margin-bottom: 20px;">문의하기</h2>
+        <a href="mailto:Info@hkpb.com" class="contact-email">Info@hkpb.com</a>
+        <p id="contact-desc" style="margin-top: 25px; color: var(--text-gray);">글로벌 부품 공급망의 혁신, PartsBank와 함께 미래를 설계하십시오.</p>
+    </section>
 </div>
 
-<div class="container" id="content"></div>
-
 <script>
+    const content = {
+        ko: { title: "UAM 혁신", desc: "도시의 경계를 넘어, 하늘을 자유롭게 연결하는 차세대 에어 모빌리티 솔루션입니다.", f1t: "eVTOL 항공기", f1d: "수직 이착륙 기술로 활주로 없는 도심 이동을 실현합니다.", f2t: "무공해 이동", f2d: "전기 추진 시스템으로 탄소 배출 없는 친환경 미래를 만듭니다.", f3t: "초고속 연결", f3d: "교통 체증 없는 하늘 길로 이동 시간을 획기적으로 단축합니다.", f4t: "스마트 시티 연동", f4d: "AI 관제 시스템으로 지상 교통과 완벽하게 연결됩니다.", cTitle: "문의하기", cDesc: "글로벌 부품 공급망의 혁신, PartsBank와 함께 미래를 설계하십시오." },
+        en: { title: "UAM Innovation", desc: "Next-gen air mobility solution connecting cities freely beyond boundaries.", f1t: "eVTOL Aircraft", f1d: "Vertical takeoff and landing technology for seamless urban travel.", f2t: "Zero Emission", f2d: "Eco-friendly future with 100% electric propulsion systems.", f3t: "Ultra-Fast", f3d: "Reducing travel time by up to 70% through traffic-free skyways.", f4t: "Smart City Link", f4d: "Perfect integration with ground transport via AI control.", cTitle: "Contact Us", cDesc: "Innovating the global parts supply chain. Design the future with PartsBank." },
+        zh: { title: "UAM 创新", desc: "超越城市边界，自由连接天空的下一代空中交通解决方案。", f1t: "eVTOL 飞行器", f1d: "垂直起降技术，实现在没有跑道的城市中心精准移动。", f2t: "零排放出行", f2d: "采用纯电动力系统，打造无噪音、无碳排的环保未来。", f3t: "超高速连接", f3d: "通过无拥堵的天空航路，将城市通勤时间缩短 70%。", f4t: "智慧城市联动", f4d: "基于 AI 的综合管制系统，与地面交通完美衔接。", cTitle: "联系我们", cDesc: "创新全球零部件供应链。与 PartsBank 一起设计未来。" },
+        ar: { title: "ابتكار UAM", desc: "حلول التنقل الجوي من الجيل القادم التي تربط المدน بحرية.", f1t: "طائرات eVTOL", f1d: "تقنية الإقلاع والهبوط العمودي للتنقل الحضري الدقيق.", f2t: "نقل خالي من الانبعاثات", f2d: "مستقبل صديق للبيئة مع أنظمة دفع كهربائية بالكامل.", f3t: "اتصال فائق السرعة", f3d: "تقليل وقت السفر بنسبة 70٪ عبر الممرات الجوية.", f4t: "ربط المدينة الذكية", f4d: "تكامل مثالي مع وسائل النقل الأرضي عبر نظام AI.", cTitle: "اتصل بنا", cDesc: "ابتكار سلسلة توريد قطع الغيار العالمية. صمم المستقبل مع PartsBank." },
+        hi: { title: "UAM नवाचार", desc: "सीमाओं से परे शहरों को जोड़ने वाला अगली पीढ़ी का एयर मोबिलिटी समाधान।", f1t: "eVTOL विमान", f1d: "बिना रनवे के शहरी आवाजाही के लिए वर्टिकल टेकऑफ़ तकनीक।", f2t: "शून्य उत्सर्जन", f2d: "इलेक्ट्रिक प्रोपल्शन सिस्टम के साथ पर्यावरण के अनुकूल भविष्य।", f3t: "अल्ट्रा-फास्ट कनेक्ट", f3d: "ट्रै픽-मुक्त हवाई मार्गों से यात्रा के समय में 70% की कमी।", f4t: "स्मार्ट सिटी इंटीग्रेशन", f4d: "AI सिस्टम के माध्यम से जमीनी परिवहन के साथ पूर्ण समन्वय।", cTitle: "संपर्क करें", cDesc: "वैश्विक पुर्जा आपूर्ति श्रृंखला में नवाचार। PartsBank के साथ भविष्य डिजाइन करें।" },
+        es: { title: "Innovación UAM", desc: "Solución de movilidad aérea de próxima generación que conecta ciudades sin límites.", f1t: "Aeronave eVTOL", f1d: "Tecnología de despegue vertical para movilidad urbana sin pistas.", f2t: "Cero Emisiones", f2d: "Futuro ecológico con sistemas de propulsión 100% eléctricos.", f3t: "Conexión Ultra Rápida", f3d: "Reduce el tiempo de viaje hasta un 70% por rutas aéreas.", f4t: "Smart City Link", f4d: "Integración perfecta con el transporte terrestre mediante IA.", cTitle: "Contáctenos", cDesc: "Innovando la cadena de suministro global de repuestos. Diseñe el futuro con PartsBank." },
+        pt: { title: "Inovação UAM", desc: "Solução de mobilidade aérea de última geração conectando cidades além das fronteiras.", f1t: "Aeronave eVTOL", f1d: "Tecnologia de decolagem vertical para mobilidade urbana precisa.", f2t: "Emissão Zero", f2d: "Futuro sustentável com sistemas de propulsão elétrica.", f3t: "Conexão Ultrarrápida", f3d: "Redução de até 70% no tempo de viagem pelas vias aéreas.", f4t: "Integração Smart City", f4d: "Conexão perfeita com transporte terrestre via sistema IA.", cTitle: "Contate-nos", cDesc: "Inovando a cadeia global de suprimentos de peças. Projete o futuro com a PartsBank." },
+        uk: { title: "Інновації UAM", desc: "Рішення аеромобільності нового покоління, що вільно з’єднує міста.", f1t: "Літак eVTOL", f1d: "Технологія вертикального зльоту для міських подорожей без смуг.", f2t: "Нульові викиди", f2d: "Екологічне майбутнє з електричними системами тяги.", f3t: "Надшвидке сполучення", f3d: "Скорочення часу в дорозі до 70% через повітряні шляхи.", f4t: "Smart City Link", f4d: "Ідеальна інтеграція з наземним транспортом через ШІ.", cTitle: "Зв'яжіться з нами", cDesc: "Інновації в глобальному ланцюжку поставок запчастин. Проектуйте майбутнє разом із PartsBank." },
+        ja: { title: "UAM イノベーション", desc: "境界を越え、空で都市を自由につなぐ次世代エアモビリティ。", f1t: "eVTOL 航空機", f1d: "垂直離着陸技術により、滑走路のない都心移動を実現します。", f2t: "ゼロエミッション", f2d: "100%電気推進システムで、カーボンニュートラルな未来へ。", f3t: "超高速接続", f3d: "渋滞のない空路により、移動時間を最大70%短축します。", f4t: "スマートシティ連携", f4d: "AI管制システムで地上交通と完璧にリンクします。", cTitle: "お問い合わせ", cDesc: "グローバルな部品サプライチェーンの革新。PartsBankと共に未来を設計しましょう。" },
+        ru: { title: "Инновации UAM", desc: "Решения аэромобильности нового поколения для связи городов.", f1t: "Аппарат eVTOL", f1d: "Технология вертикального взлета для полетов в центре города.", f2t: "Нулевые выбросы", f2d: "Экологичное будущее с электрическими двигателями.", f3t: "Сверхскорость", f3d: "Сокращение времени в пути на 70% благодаря небу без пробок.", f4t: "Связь со Smart City", f4d: "Полная интеграция с наземным транспортом через ИИ.", cTitle: "Связаться с нами", cDesc: "Инновации в глобальной цепочке поставок запчастей. Проектируйте будущее вместе с PartsBank." }
+    };
 
-const translations = {
-
-en: `
-<h1>HK-PartsBank</h1>
-<p><strong>Powering Industry Through Strategic Component Intelligence.</strong></p>
-
-<h2>Corporate Overview</h2>
-<p>HK-PartsBank is a global industrial supply and strategic components infrastructure platform serving aerospace, defense, robotics, energy, and advanced manufacturing sectors.</p>
-
-<p>We provide high-reliability certified components, supply-chain intelligence, and scalable procurement ecosystems aligned with sovereign industrial and national security standards.</p>
-
-<h2>Core Capabilities</h2>
-<p>
-• Aerospace & Defense Components<br>
-• Industrial & Robotics Parts Distribution<br>
-• Strategic Supply Chain Integration<br>
-• High-Reliability Electronic & Mechanical Modules<br>
-• Global Procurement & Compliance Solutions
-</p>
-
-<h2>Technology & Infrastructure Edge</h2>
-<p>Our platform integrates AI-driven inventory forecasting, secure supplier verification, and mission-critical logistics optimization to ensure resilient global supply continuity.</p>
-
-<h2>Investment Thesis</h2>
-<p>The global defense and advanced manufacturing sectors require stable, transparent, and secure component ecosystems. HK-PartsBank is positioned as a <strong>strategic supply infrastructure provider</strong> enabling long-term industrial sovereignty and scalable global expansion.</p>
-
-<div class="footer">Contact: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
-`,
-
-ko: `
-<h1>HK-PartsBank</h1>
-<p><strong>전략적 부품 인프라로 산업을 움직입니다.</strong></p>
-
-<h2>기업 개요</h2>
-<p>HK-PartsBank는 항공우주, 방산, 로보틱스, 에너지 및 첨단 제조 산업을 위한 글로벌 산업 부품 공급 인프라 플랫폼입니다.</p>
-
-<p>고신뢰 인증 부품, 공급망 인텔리전스, 확장형 조달 생태계를 통해 국가 전략 산업 기준에 부합하는 솔루션을 제공합니다.</p>
-
-<h2>핵심 역량</h2>
-<p>
-• 항공·방산 부품 공급<br>
-• 산업·로봇 부품 유통<br>
-• 전략 공급망 통합 관리<br>
-• 고신뢰 전자·기계 모듈<br>
-• 글로벌 조달 및 규제 대응
-</p>
-
-<h2>기술 및 인프라 경쟁력</h2>
-<p>AI 기반 재고 예측, 보안 공급자 검증, 임무 중심 물류 최적화를 통해 안정적인 글로벌 공급 연속성을 보장합니다.</p>
-
-<h2>투자 포인트</h2>
-<p>방산 및 첨단 제조 산업은 안정적이고 투명한 부품 생태계를 요구합니다. HK-PartsBank는 <strong>전략적 산업 공급 인프라 기업</strong>으로서 장기적 산업 주권과 글로벌 확장성을 지원합니다.</p>
-
-<div class="footer">문의: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
-`,
-
-zh: `
-<h1>HK-PartsBank</h1>
-<p><strong>以战略级零部件基础设施驱动产业发展。</strong></p>
-
-<h2>公司概述</h2>
-<p>HK-PartsBank 是面向航天、国防、机器人、能源及先进制造领域的全球工业零部件供应平台。</p>
-
-<p>我们提供高可靠认证部件、供应链智能系统及可扩展采购生态，满足国家级产业与安全标准。</p>
-
-<h2>核心能力</h2>
-<p>
-• 航空航天与国防部件<br>
-• 工业与机器人零件分销<br>
-• 战略供应链整合<br>
-• 高可靠电子与机械模块<br>
-• 全球采购与合规解决方案
-</p>
-
-<h2>技术优势</h2>
-<p>通过 AI 库存预测、安全供应商验证与关键物流优化，实现稳定可靠的全球供应连续性。</p>
-
-<h2>投资价值</h2>
-<p>国防与先进制造行业对安全稳定的零部件体系需求不断提升。HK-PartsBank 定位为<strong>战略供应基础设施提供商</strong>，支持产业主权与全球扩展。</p>
-
-<div class="footer">联系: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
-`,
-
-ar: `
-<h1>HK-PartsBank</h1>
-<p><strong>نُمكّن الصناعة عبر بنية تحتية استراتيجية للمكونات.</strong></p>
-
-<h2>نظرة عامة</h2>
-<p>HK-PartsBank منصة عالمية لتوريد المكونات الصناعية تخدم قطاعات الطيران والدفاع والروبوتات والطاقة والتصنيع المتقدم.</p>
-
-<p>نوفر مكونات معتمدة عالية الموثوقية وأنظمة ذكية لسلاسل الإمداد تلبي معايير الصناعات الاستراتيجية والأمن الوطني.</p>
-
-<h2>القدرات الأساسية</h2>
-<p>
-• مكونات الطيران والدفاع<br>
-• توزيع قطع الروبوتات والصناعة<br>
-• تكامل سلاسل الإمداد الاستراتيجية<br>
-• وحدات إلكترونية وميكانيكية عالية الاعتمادية<br>
-• حلول شراء عالمية والامتثال التنظيمي
-</p>
-
-<h2>الميزة التقنية</h2>
-<p>تعتمد منصتنا على الذكاء الاصطناعي لتوقع المخزون والتحقق من الموردين وتحسين الخدمات اللوجستية لضمان استمرارية الإمداد العالمية.</p>
-
-<h2>فرصة الاستثمار</h2>
-<p>تتطلب قطاعات الدفاع والتصنيع المتقدم أنظمة توريد مستقرة وآمنة. تتموضع HK-PartsBank كمزود<strong>لبنية تحتية استراتيجية لسلاسل الإمداد</strong> تدعم السيادة الصناعية والتوسع العالمي.</p>
-
-<div class="footer">البريد: info@hkpartsbank.com<br>© 2026 HK-PartsBank</div>
-`
-};
-
-function setLang(lang){
-document.getElementById("content").innerHTML = translations[lang];
-if(lang==="ar"){document.body.dir="rtl";}
-else{document.body.dir="ltr";}
-}
-
-function autoDetect(){
-let l=navigator.language.substring(0,2);
-if(translations[l]){setLang(l);} else{setLang("en");}
-}
-
-autoDetect();
-
+    function setLang(lang) {
+        const item = content[lang];
+        document.getElementById('main-title').innerText = item.title;
+        document.getElementById('main-desc').innerText = item.desc;
+        document.getElementById('f1-t').innerText = item.f1t;
+        document.getElementById('f1-d').innerText = item.f1d;
+        document.getElementById('f2-t').innerText = item.f2t;
+        document.getElementById('f2-d').innerText = item.f2d;
+        document.getElementById('f3-t').innerText = item.f3t;
+        document.getElementById('f3-d').innerText = item.f3d;
+        document.getElementById('f4-t').innerText = item.f4t;
+        document.getElementById('f4-d').innerText = item.f4d;
+        document.getElementById('contact-title').innerText = item.cTitle;
+        document.getElementById('contact-desc').innerText = item.cDesc;
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    }
 </script>
 
 </body>
