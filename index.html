@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PartsBank | Future of UAM & Logistics</title>
+    <title>PartsBank | 글로벌 부품 공급망의 중심</title>
     <style>
         :root {
-            --primary-bg: #0a0a12;
-            --accent-blue: #3a86ff;
-            --text-gray: #a0a0c0;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --primary-bg: #0a0a12; /* 다크 네이비 배경 */
+            --accent-blue: #3a86ff; /* 포인트 블루 */
+            --text-gray: #a0a0c0; /* 보조 텍스트 */
+            --card-bg: rgba(255, 255, 255, 0.05); /* 카드 배경 */
         }
         body {
             margin: 0;
@@ -25,7 +25,7 @@
             padding: 40px 20px;
             text-align: center;
         }
-        /* Language Selector */
+        /* 10개국어 언어 선택 바 */
         .lang-selector {
             margin-bottom: 50px;
             display: flex;
@@ -49,7 +49,7 @@
             border-color: var(--accent-blue);
         }
 
-        /* Hero Section */
+        /* 메인 타이틀 */
         h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
@@ -65,7 +65,7 @@
             margin: 0 auto 60px;
         }
 
-        /* Features Grid */
+        /* PartsBank 핵심 기능 그리드 (4칸) */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -80,6 +80,7 @@
             transition: transform 0.3s ease, border 0.3s ease;
             cursor: pointer;
             backdrop-filter: blur(10px);
+            text-align: left; /* 카드 내 텍스트는 좌측 정렬 */
         }
         .card:hover {
             transform: translateY(-10px);
@@ -101,7 +102,7 @@
             color: var(--text-gray);
         }
 
-        /* Contact Section */
+        /* 문의하기 섹션 */
         .contact-section {
             margin-top: 100px;
             padding: 60px 20px;
@@ -123,7 +124,7 @@
             border-color: #fff;
         }
 
-        /* Animations */
+        /* 애니메이션 */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -148,72 +149,76 @@
     </div>
 
     <header class="animate">
-        <h1 id="main-title">UAM 혁신</h1>
-        <p class="subtitle" id="main-desc">도시의 경계를 넘어, 하늘을 자유롭게 연결하는 차세대 에어 모빌리티 솔루션입니다.</p>
+        <h1 id="main-title">PartsBank 글로벌 공급망</h1>
+        <p class="subtitle" id="main-desc">전 세계를 연결하는 지능형 부품 소싱 및 공급 플랫폼입니다. 필요한 모든 부품을 가장 빠르고 안전하게 제공합니다.</p>
     </header>
 
     <div class="grid animate" style="animation-delay: 0.2s;">
         <div class="card">
+            <span class="icon">🌐</span>
+            <h3 id="f1-t">글로벌 소싱 네트워크</h3>
+            <p id="f1-d">전 세계 수천 개의 인증된 공급업체와 연결되어 희귀 부품까지 신속하게 찾아냅니다.</p>
+        </div>
+        <div class="card">
+            <span class="icon">🤖</span>
+            <h3 id="f2-t">AI 재고 최적화</h3>
+            <p id="f2-d">인공지능 기반 수요 예측으로 필요한 부품을 항상 최적의 수량으로 보유합니다.</p>
+        </div>
+        <div class="card">
             <span class="icon">🚀</span>
-            <h3 id="f1-t">eVTOL 항공기</h3>
-            <p id="f1-d">수직 이착륙 기술로 활주로 없는 도심 핵심부로의 정밀한 이동을 실현합니다.</p>
+            <h3 id="f3-t">초고속 익스프레스 배송</h3>
+            <p id="f3-d">글로벌 물류 거점을 활용하여 주요 도시로 24시간 이내 배송을 목표로 합니다.</p>
         </div>
         <div class="card">
-            <span class="icon">🌿</span>
-            <h3 id="f2-t">무공해 이동</h3>
-            <p id="f2-d">100% 전기 추진 시스템을 사용하여 소음과 탄소 배출 없는 친환경 미래를 만듭니다.</p>
-        </div>
-        <div class="card">
-            <span class="icon">⚡</span>
-            <h3 id="f3-t">초고속 연결</h3>
-            <p id="f3-d">교통 체증 없는 하늘 길을 통해 도심 내 이동 시간을 최대 70% 단축합니다.</p>
-        </div>
-        <div class="card">
-            <span class="icon">🏙️</span>
-            <h3 id="f4-t">스마트 시티 연동</h3>
-            <p id="f4-d">AI 기반 통합 관제 시스템으로 지상 교통수단과 완벽하게 연결됩니다.</p>
+            <span class="icon">🔍</span>
+            <h3 id="f4-t">투명한 실시간 추적</h3>
+            <p id="f4-d">소싱부터 최종 도착까지 모든 단계를 실시간으로 투명하게 모니터링할 수 있습니다.</p>
         </div>
     </div>
 
     <section class="contact-section animate" style="animation-delay: 0.4s;">
-        <h2 id="contact-title" style="margin-bottom: 20px;">문의하기</h2>
-        <a href="mailto:Info@hkpb.com" class="contact-email">Info@hkpb.com</a>
-        <p id="contact-desc" style="margin-top: 25px; color: var(--text-gray);">글로벌 부품 공급망의 혁신, PartsBank와 함께 미래를 설계하십시오.</p>
+        <h2 id="contact-title" style="margin-bottom: 20px;">글로벌 파트너쉽 문의</h2>
+        <a href="mailto:info@hkpb.com" class="contact-email">info@hkpb.com</a>
+        <p id="contact-desc" style="margin-top: 25px; color: var(--text-gray);">PartsBank와 함께 효율적인 부품 공급망을 구축하고 미래를 앞당기십시오.</p>
     </section>
 </div>
 
 <script>
+    // 10개국어 데이터베이스 (PartsBank 버전)
     const content = {
-        ko: { title: "UAM 혁신", desc: "도시의 경계를 넘어, 하늘을 자유롭게 연결하는 차세대 에어 모빌리티 솔루션입니다.", f1t: "eVTOL 항공기", f1d: "수직 이착륙 기술로 활주로 없는 도심 이동을 실현합니다.", f2t: "무공해 이동", f2d: "전기 추진 시스템으로 탄소 배출 없는 친환경 미래를 만듭니다.", f3t: "초고속 연결", f3d: "교통 체증 없는 하늘 길로 이동 시간을 획기적으로 단축합니다.", f4t: "스마트 시티 연동", f4d: "AI 관제 시스템으로 지상 교통과 완벽하게 연결됩니다.", cTitle: "문의하기", cDesc: "글로벌 부품 공급망의 혁신, PartsBank와 함께 미래를 설계하십시오." },
-        en: { title: "UAM Innovation", desc: "Next-gen air mobility solution connecting cities freely beyond boundaries.", f1t: "eVTOL Aircraft", f1d: "Vertical takeoff and landing technology for seamless urban travel.", f2t: "Zero Emission", f2d: "Eco-friendly future with 100% electric propulsion systems.", f3t: "Ultra-Fast", f3d: "Reducing travel time by up to 70% through traffic-free skyways.", f4t: "Smart City Link", f4d: "Perfect integration with ground transport via AI control.", cTitle: "Contact Us", cDesc: "Innovating the global parts supply chain. Design the future with PartsBank." },
-        zh: { title: "UAM 创新", desc: "超越城市边界，自由连接天空的下一代空中交通解决方案。", f1t: "eVTOL 飞行器", f1d: "垂直起降技术，实现在没有跑道的城市中心精准移动。", f2t: "零排放出行", f2d: "采用纯电动力系统，打造无噪音、无碳排的环保未来。", f3t: "超高速连接", f3d: "通过无拥堵的天空航路，将城市通勤时间缩短 70%。", f4t: "智慧城市联动", f4d: "基于 AI 的综合管制系统，与地面交通完美衔接。", cTitle: "联系我们", cDesc: "创新全球零部件供应链。与 PartsBank 一起设计未来。" },
-        ar: { title: "ابتكار UAM", desc: "حلول التنقل الجوي من الجيل القادم التي تربط المدน بحرية.", f1t: "طائرات eVTOL", f1d: "تقنية الإقلاع والهبوط العمودي للتنقل الحضري الدقيق.", f2t: "نقل خالي من الانبعاثات", f2d: "مستقبل صديق للبيئة مع أنظمة دفع كهربائية بالكامل.", f3t: "اتصال فائق السرعة", f3d: "تقليل وقت السفر بنسبة 70٪ عبر الممرات الجوية.", f4t: "ربط المدينة الذكية", f4d: "تكامل مثالي مع وسائل النقل الأرضي عبر نظام AI.", cTitle: "اتصل بنا", cDesc: "ابتكار سلسلة توريد قطع الغيار العالمية. صمم المستقبل مع PartsBank." },
-        hi: { title: "UAM नवाचार", desc: "सीमाओं से परे शहरों को जोड़ने वाला अगली पीढ़ी का एयर मोबिलिटी समाधान।", f1t: "eVTOL विमान", f1d: "बिना रनवे के शहरी आवाजाही के लिए वर्टिकल टेकऑफ़ तकनीक।", f2t: "शून्य उत्सर्जन", f2d: "इलेक्ट्रिक प्रोपल्शन सिस्टम के साथ पर्यावरण के अनुकूल भविष्य।", f3t: "अल्ट्रा-फास्ट कनेक्ट", f3d: "ट्रै픽-मुक्त हवाई मार्गों से यात्रा के समय में 70% की कमी।", f4t: "स्मार्ट सिटी इंटीग्रेशन", f4d: "AI सिस्टम के माध्यम से जमीनी परिवहन के साथ पूर्ण समन्वय।", cTitle: "संपर्क करें", cDesc: "वैश्विक पुर्जा आपूर्ति श्रृंखला में नवाचार। PartsBank के साथ भविष्य डिजाइन करें।" },
-        es: { title: "Innovación UAM", desc: "Solución de movilidad aérea de próxima generación que conecta ciudades sin límites.", f1t: "Aeronave eVTOL", f1d: "Tecnología de despegue vertical para movilidad urbana sin pistas.", f2t: "Cero Emisiones", f2d: "Futuro ecológico con sistemas de propulsión 100% eléctricos.", f3t: "Conexión Ultra Rápida", f3d: "Reduce el tiempo de viaje hasta un 70% por rutas aéreas.", f4t: "Smart City Link", f4d: "Integración perfecta con el transporte terrestre mediante IA.", cTitle: "Contáctenos", cDesc: "Innovando la cadena de suministro global de repuestos. Diseñe el futuro con PartsBank." },
-        pt: { title: "Inovação UAM", desc: "Solução de mobilidade aérea de última geração conectando cidades além das fronteiras.", f1t: "Aeronave eVTOL", f1d: "Tecnologia de decolagem vertical para mobilidade urbana precisa.", f2t: "Emissão Zero", f2d: "Futuro sustentável com sistemas de propulsão elétrica.", f3t: "Conexão Ultrarrápida", f3d: "Redução de até 70% no tempo de viagem pelas vias aéreas.", f4t: "Integração Smart City", f4d: "Conexão perfeita com transporte terrestre via sistema IA.", cTitle: "Contate-nos", cDesc: "Inovando a cadeia global de suprimentos de peças. Projete o futuro com a PartsBank." },
-        uk: { title: "Інновації UAM", desc: "Рішення аеромобільності нового покоління, що вільно з’єднує міста.", f1t: "Літак eVTOL", f1d: "Технологія вертикального зльоту для міських подорожей без смуг.", f2t: "Нульові викиди", f2d: "Екологічне майбутнє з електричними системами тяги.", f3t: "Надшвидке сполучення", f3d: "Скорочення часу в дорозі до 70% через повітряні шляхи.", f4t: "Smart City Link", f4d: "Ідеальна інтеграція з наземним транспортом через ШІ.", cTitle: "Зв'яжіться з нами", cDesc: "Інновації в глобальному ланцюжку поставок запчастин. Проектуйте майбутнє разом із PartsBank." },
-        ja: { title: "UAM イノベーション", desc: "境界を越え、空で都市を自由につなぐ次世代エアモビリティ。", f1t: "eVTOL 航空機", f1d: "垂直離着陸技術により、滑走路のない都心移動を実現します。", f2t: "ゼロエミッション", f2d: "100%電気推進システムで、カーボンニュートラルな未来へ。", f3t: "超高速接続", f3d: "渋滞のない空路により、移動時間を最大70%短축します。", f4t: "スマートシティ連携", f4d: "AI管制システムで地上交通と完璧にリンクします。", cTitle: "お問い合わせ", cDesc: "グローバルな部品サプライチェーンの革新。PartsBankと共に未来を設計しましょう。" },
-        ru: { title: "Инновации UAM", desc: "Решения аэромобильности нового поколения для связи городов.", f1t: "Аппарат eVTOL", f1d: "Технология вертикального взлета для полетов в центре города.", f2t: "Нулевые выбросы", f2d: "Экологичное будущее с электрическими двигателями.", f3t: "Сверхскорость", f3d: "Сокращение времени в пути на 70% благодаря небу без пробок.", f4t: "Связь со Smart City", f4d: "Полная интеграция с наземным транспортом через ИИ.", cTitle: "Связаться с нами", cDesc: "Инновации в глобальной цепочке поставок запчастей. Проектируйте будущее вместе с PartsBank." }
+        ko: { title: "PartsBank 글로벌 공급망", desc: "전 세계를 연결하는 지능형 부품 소싱 플랫폼. 필요한 모든 부품을 빠르고 안전하게.", f1t: "글로벌 소싱", f1d: "수천 개의 인증업체와 연결, 희귀 부품까지 신속 확보.", f2t: "AI 재고 최적화", f2d: "AI 수요 예측으로 항상 최적의 재고량 유지.", f3t: "초고속 배송", f3d: "물류 거점 활용, 주요 도시 24시간 배송 목표.", f4t: "투명한 추적", f4d: "소싱부터 도착까지 전 단계 실시간 모니터링.", cTitle: "파트너쉽 문의", cDesc: "PartsBank와 함께 부품 공급망의 혁신을 경험하십시오." },
+        en: { title: "PartsBank Global Network", desc: "Intelligent parts sourcing platform connecting the world. Providing any part quickly and safely.", f1t: "Global Sourcing", f1d: "Access to thousands of verified suppliers, even for rare parts.", f2t: "AI Inventory", f2d: "Optimal stock levels maintained through AI demand forecasting.", f3t: "Express Delivery", f3d: "Global logistics bases target 24-hour delivery to major cities.", f4t: "Transparent Tracking", f4d: "Real-time, transparent monitoring from sourcing to arrival.", cTitle: "Partnership Inquiry", cDesc: "Innovating the global parts supply chain. Build the future with PartsBank." },
+        zh: { title: "PartsBank 全球供应链", desc: "连接全球的智能零部件采购平台。最快最安全地提供所需部件。", f1t: "全球采购", f1d: "连接数千家认证供应商，迅速获取稀缺部件。", f2t: "AI 库存优化", f2d: "基于 AI 的需求预测，始终保持最佳库存水平。", f3t: "超高速配送", f3d: "利用全球物流据点，目标是24小时内配送至主要城市。", f4t: "透明追踪", f4d: "采购到货全过程透明化，实现实时监控。", cTitle: "合作伙伴咨询", cDesc: "与 PartsBank 一起，体验供应链的革新。" },
+        ar: { title: "شبكة PartsBank العالمية", desc: "منصة ذكية لتوريد قطع الغيار تربط العالم. توفير أي قطعة بسرعة وأمان.", f1t: "مصادر عالمية", f1d: "الوصول إلى آلاف الموردين المعتمدين، حتى للأجزاء النادرة.", f2t: "مخزون AI", f2d: "مستويات المخزون المثلى من خلال التنبؤ بالطلب المستند إلى AI.", f3t: "تسليم سريع", f3d: "القواعد اللوجستية العالمية تستهدف التسليم خلال 24 ساعة للمدن الكبرى.", f4t: "تتبع شفاف", f4d: "مراقبة شفافة في الوقت الفعلي من المصدر إلى الوصول.", cTitle: "استفسار الشراكة", cDesc: "ابتكار سلسلة توريد قطع الغيار العالمية. ابدأ المستقبل مع PartsBank." },
+        hi: { title: "PartsBank ग्लोबल नेटवर्क", desc: "दुनिया को जोड़ने वाला इंटेलिजेंट पुर्जा सोर्सिंग प्लेटफॉर्म। किसी भी पुर्जे को जल्दी और सुरक्षित रूप से प्रदान करना।", f1t: "ग्लोबल सोर्सिंग", f1d: "हजारों सत्यापित आपूर्तिकर्ताओं तक पहुंच, यहां तक कि दुर्लभ पुर्जों के लिए भी।", f2t: "AI इन्वेंटरी", f2d: "AI मांग पूर्वानुमान के माध्यम से बनाए रखा इष्टतम स्टॉक स्तर।", f3t: "एक्सप्रेस डिलीवरी", f3d: "ग्लोबल लॉजिस्टिक्स बेस प्रमुख शहरों में 24 घंटे की डिलीवरी का लक्ष्य रखते हैं।", f4t: "पारदर्शी ट्रैकिंग", f4d: "सोर्सिंग से आगमन तक वास्तविक समय, पारदर्शी निगरानी।", cTitle: "साझेदारी पूछताछ", cDesc: "वैश्विक पुर्जा आपूर्ति श्रृंखला में नवाचार। PartsBank के साथ भविष्य का निर्माण करें।" },
+        es: { title: "Red Global de PartsBank", desc: "Plataforma inteligente de abastecimiento de repuestos. Proveyendo cualquier pieza de forma rápida y segura.", f1t: "Abastecimiento Global", f1d: "Acceso a miles de proveedores certificados, incluso piezas raras.", f2t: "Inventario de IA", f2d: "Niveles de stock óptimos mantenidos mediante previsión de demanda por IA.", f3t: "Entrega Expresa", f3d: "Las bases logísticas globales apuntan a entregas en 24 horas en ciudades principales.", f4t: "Seguimiento Transparente", f4d: "Monitoreo transparente en tiempo real desde el abastecimiento hasta la llegada.", cTitle: "Consulta de Asociación", cDesc: "Innovando la cadena de suministro global de repuestos. Diseñe el futuro con PartsBank." },
+        pt: { title: "Rede Global da PartsBank", desc: "Plataforma inteligente de aquisição de peças conectando o mundo. Fornecendo qualquer peça de forma rápida e segura.", f1t: "Sourcing Global", f1d: "Acesso a milhares de fornecedores certificados, até para peças raras.", f2t: "Inventário de IA", f2d: "Níveis de estoque ideais mantidos por previsão de demanda por IA.", f3t: "Entrega Expressa", f3d: "Bases logísticas globais visam entrega em 24 horas para principais cidades.", f4t: "Rastreamento Transparente", f4d: "Monitoramento transparente em tempo real da origem até a chegada.", cTitle: "Consulta de Parceria", cDesc: "Inovando a cadeia de suprimentos global de peças. Projete o futuro com a PartsBank." },
+        uk: { title: "Глобальна мережа PartsBank", desc: "Інтелектуальна платформа постачання запчастин. Надає будь-які деталі швидко та безпечно.", f1t: "Глобальне постачання", f1d: "Доступ до тисяч сертифікованих постачальників, навіть для рідкісних деталей.", f2t: "AI Інвентар", f2d: "Оптимальний рівень запасів завдяки прогнозуванню попиту ШІ.", f3t: "Экспрес-доставка", f3d: "Глобальні логістичні бази цілять на 24-годинну доставку до великих міст.", f4t: "Прозорий трекінг", f4d: "Прозорий моніторинг у реальному часі від закупівлі до прибуття.", cTitle: "Запит на партнерство", cDesc: "Інновації в глобальному ланцюжку поставок запчастин. Проектуйте майбутнє з PartsBank." },
+        ja: { title: "PartsBank グローバル供給網", desc: "世界を繋ぐインテリジェント部品調達プラットフォーム。必要な部品を最も速く、安全に提供。", f1t: "グローバル調達", f1d: "数千の認証サプライヤーと接続、稀少部品も迅速に確保。", f2t: "AI 在庫最適化", f2d: "AI需要予測に基づき、常に最適な在庫レベルを維持。", f3t: "超高速配送", f3d: "グローバル物流拠点を活用、主要都市へ24時間配送を目標。", f4t: "透明な追跡", f4d: "調達から到着まで、全プロセスをリアルタイムで透明に監視。", cTitle: "パートナーシップ問い合わせ", cDesc: "グローバルな部品サプライチェーンの革新。PartsBankと共に未来を設計しましょう。" },
+        ru: { title: "Глобальная сеть PartsBank", desc: "Интеллектуальная платформа поставок запчастей, соединяющая мир. Быстро и безопасно.", f1t: "Глобальные поставки", f1d: "Доступ к тысячам сертифицированных поставщиков, даже для редких деталей.", f2t: "AI Инвентарь", f2d: "Оптимальный уровень запасов благодаря прогнозированию спроса ИИ.", f3t: "Экспресс-доставка", f3d: "Логистические базы нацелены на 24-часовую доставку в крупные города.", f4t: "Прозрачный трекинг", f4d: "Прозрачный мониторинг в реальном времени от закупки до доставки.", cTitle: "Запрос на партнерство", cDesc: "Инновации в глобальной цепочке поставок запчастей. Проектируйте будущее вместе с PartsBank." }
     };
 
+    // 언어 변경 함수
     function setLang(lang) {
-        const item = content[lang];
-        document.getElementById('main-title').innerText = item.title;
-        document.getElementById('main-desc').innerText = item.desc;
-        document.getElementById('f1-t').innerText = item.f1t;
-        document.getElementById('f1-d').innerText = item.f1d;
-        document.getElementById('f2-t').innerText = item.f2t;
-        document.getElementById('f2-d').innerText = item.f2d;
-        document.getElementById('f3-t').innerText = item.f3t;
-        document.getElementById('f3-d').innerText = item.f3d;
-        document.getElementById('f4-t').innerText = item.f4t;
-        document.getElementById('f4-d').innerText = item.f4d;
-        document.getElementById('contact-title').innerText = item.cTitle;
-        document.getElementById('contact-desc').innerText = item.cDesc;
+        const data = content[lang];
+        document.getElementById('main-title').innerText = data.title;
+        document.getElementById('main-desc').innerText = data.desc;
+        document.getElementById('f1-t').innerText = data.f1t;
+        document.getElementById('f1-d').innerText = data.f1d;
+        document.getElementById('f2-t').innerText = data.f2t;
+        document.getElementById('f2-d').innerText = data.f2d;
+        document.getElementById('f3-t').innerText = data.f3t;
+        document.getElementById('f3-d').innerText = data.f3d;
+        document.getElementById('f4-t').innerText = data.f4t;
+        document.getElementById('f4-d').innerText = data.f4d;
+        document.getElementById('contact-title').innerText = data.cTitle;
+        document.getElementById('contact-desc').innerText = data.cDesc;
         
+        // 버튼 활성화 상태 변경
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
         
+        // 아랍어는 우측 정렬 (RTL)
         document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     }
 </script>
